@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <!-- ========================================================================
+       1. PAGE SETTINGS & MOBILE SCREEN OPTIMIZATION
+       This tells phones and PCs how to scale the page properly so the phone
+       screen looks sharp and feels just like a PC movie screen.
+       ======================================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>TenX Ink | Unleash A New Dimension of Art</title>
+
+  <!-- ========================================================================
+       2. GOOGLE FONTS (GREEK MONUMENTAL SERIFS & CALLIGRAPHY FONTS)
+       - Cinzel & Cinzel Decorative: Gives the Greek movie trailer carved stone feel.
+       - Cormorant Garamond: Gives the high-contrast luxury editorial look from Inspo 1.
+       - Pinyon Script: Gives the flowing "tattoo being written on its own" script.
+       ======================================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Pinyon+Script&display=swap"
+    rel="stylesheet" />
+
+  <!-- ========================================================================
+       3. TAILWIND CSS & CUSTOM THEME COLORS
+       Loads Tailwind CSS and sets up our custom TenX Ink dark obsidian blacks
+       and Greek antique gold colors.
+       ======================================================================== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#050507',
+            charcoal: '#0c0c10',
+            gold: {
+              light: '#f0d290',
+              DEFAULT: '#c99b52',
+              deep: '#8f6524',
+            },
+            ivory: '#f5f2eb',
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            decorative: ['"Cinzel Decorative"', 'serif'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            calligraphy: ['"Pinyon Script"', 'cursive'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom CSS file with simple comments -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-obsidian text-ivory antialiased selection:bg-gold selection:text-obsidian">
+
+  <!-- ========================================================================
+       4. SUBTLE MOVIE FILM GRAIN OVERLAY
+       Adds a super light cinema texture over the whole screen so the dark
+       background feels like an IMAX movie trailer.
+       ======================================================================== -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       5. TOP NAVIGATION BAR (Phone & PC Responsive)
+       - Left side: TenX Ink brand name (you can swap in your logo image later!)
+       - Right side: Clean two-line "MENU" button.
+       ======================================================================== -->
+  <header id="main-navbar"
+    class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 lg:px-14 py-4 sm:py-6 transition-all duration-500">
+    <div class="max-w-[1440px] mx-auto flex items-center justify-between">
+
+      <!-- BRAND LOGO SLOT (Replace the text or uncomment <img> when your logo is ready) -->
+      <a href="#hero-section" class="group relative flex flex-col items-start focus:outline-none"
+        aria-label="TenX Ink Home">
+        <!-- When you have your logo file later, simply put it here:
+             <img src="assets/your-logo.png" alt="TenX Ink" class="h-9 sm:h-11 w-auto" /> -->
+        <span
+          class="font-decorative text-lg sm:text-2xl md:text-[26px] tracking-[0.22em] text-gold font-bold transition-colors duration-300 group-hover:text-gold-light">
+          TEN<span class="text-[1.24em] text-ivory inline-block leading-none">X</span> INK
+        </span>
+        <!-- Tiny self-drawing gold ink flourish under the logo -->
+        <svg class="w-24 sm:w-32 h-2 -mt-0.5 overflow-visible" viewBox="0 0 140 10" fill="none">
+          <path class="ink-stroke-path" d="M2 6 C40 1, 95 9, 138 3" stroke="#c99b52" stroke-width="1.2"
+            stroke-linecap="round" />
+        </svg>
+      </a>
+
+      <!-- RIGHT SIDE CONTROLS: Menu Button -->
+      <div class="flex items-center">
+        <!-- Two-Line Hamburger MENU Button (Matches Inspo 1) -->
+        <button id="open-menu-btn" type="button"
+          class="group flex items-center gap-2.5 sm:gap-3 py-2 px-2 sm:px-3 rounded-full hover:bg-white/5 transition"
+          aria-label="Open Cinematic Story Menu">
+          <!-- Two horizontal lines that animate on hover -->
+          <span class="flex flex-col justify-center gap-1.5 w-5 sm:w-6">
+            <span class="w-full h-[1.5px] bg-ivory group-hover:bg-gold transition-all duration-300"></span>
+            <span
+              class="w-4/5 h-[1.5px] bg-ivory group-hover:w-full group-hover:bg-gold transition-all duration-300"></span>
+          </span>
+          <span
+            class="font-cinzel text-[11px] sm:text-xs tracking-[0.22em] uppercase text-ivory group-hover:text-gold transition-colors">
+            MENU
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       6. FULL-SCREEN CINEMATIC MENU OVERLAY
+       Opens when the user taps "MENU". Shows all 7 chapters of the website
+       like scenes in a Greek movie trailer.
+       ======================================================================== -->
+  <div id="cinematic-menu" data-lenis-prevent
+    class="fixed inset-0 z-[60] bg-obsidian/55 backdrop-blur-2xl opacity-0 pointer-events-none transition-opacity duration-500 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <!-- Top bar inside the menu -->
+    <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between">
+      <span class="font-decorative text-lg sm:text-2xl tracking-[0.22em] text-gold font-bold">
+        TEN<span class="text-[1.24em] text-ivory inline-block leading-none">X</span> INK
+      </span>
+      <button id="close-menu-btn"
+        class="btn-outline-gold px-4 py-2 text-xs font-cinzel tracking-[0.2em] uppercase text-ivory hover:text-gold">
+        ✕ Close
+      </button>
+    </div>
+
+    <!-- Center list of current website sections -->
+    <nav class="my-auto py-8 max-w-2xl mx-auto w-full">
+      <p class="font-calligraphy text-2xl sm:text-3xl text-gold-light/90 text-center mb-5">
+        Every Ink Tells A Story
+      </p>
+      <ul class="space-y-3 sm:space-y-4 text-center font-cinzel">
+        <li>
+          <a href="#hero-section"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-ivory hover:text-gold transition">
+            01. HOME
+          </a>
+        </li>
+        <li>
+          <a href="#portfolio-section"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-ivory hover:text-gold transition">
+            02. TATTOO GALLERY
+          </a>
+        </li>
+        <li>
+          <button id="menu-see-all-btn" type="button"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-gold-light hover:text-gold transition uppercase">
+            03. SEE ALL WORKS
+          </button>
+        </li>
+        <li>
+          <a href="#artist-section"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-ivory hover:text-gold transition">
+            04. MEET THE ARTIST
+          </a>
+        </li>
+        <li>
+          <a href="#mentorship-section"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-ivory hover:text-gold transition">
+            05. BECOME A TATTOO ARTIST
+          </a>
+        </li>
+        <li>
+          <a href="#testimonials-section"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-ivory hover:text-gold transition">
+            06. CLIENT TESTIMONIALS
+          </a>
+        </li>
+        <li>
+          <a href="#faq-section"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-ivory hover:text-gold transition">
+            07. FAQ
+          </a>
+        </li>
+        <li>
+          <a href="#booking-section"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-gold hover:text-gold-light transition font-bold">
+            08. BOOK AN APPOINTMENT
+          </a>
+        </li>
+        <li>
+          <a href="#footer-section"
+            class="menu-link inline-block text-base sm:text-xl tracking-[0.2em] text-ivory/75 hover:text-gold transition">
+            09. CONTACT &amp; LOCATION
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         7. HERO SECTION (100% UNTOUCHED FROM STEP 1)
+         ====================================================================== -->
+    <section id="hero-section"
+      class="relative w-full h-[100dvh] min-h-[640px] overflow-hidden flex items-center justify-center select-none bg-obsidian">
+      <!-- 7A. BACKGROUND TATTOO PORTRAIT IMAGE -->
+      <div id="hero-bg-wrapper"
+        class="absolute inset-0 z-0 flex items-center justify-center overflow-hidden bg-obsidian will-change-transform">
+        <img id="hero-portrait" src="assets/hero-tattoo.jpg" alt="TenX Ink Sacred Geometry Mandala Back Tattoo Portrait"
+          class="w-full h-full object-cover object-[52%_22%] sm:object-[50%_20%] scale-105 opacity-0 brightness-[0.78] contrast-[1.18] will-change-transform" />
+        <div class="hero-vignette absolute inset-0"></div>
+      </div>
+
+      <!-- 7B. FLOATING GOLD EMBER & INK DUST CANVAS -->
+      <canvas id="gold-particles-canvas" class="absolute inset-0 z-10 pointer-events-none opacity-80"></canvas>
+
+      <!-- 7C. LEFT & RIGHT GOLD VORTEX ARCS (EXACT TAPERED BLADES FROM INSPO 1)
+           Both left and right use the exact same tapered chisel-to-needle blade
+           geometry and mirror each other symmetrically. -->
+      <div id="spiral-left"
+        class="spiral-ornament absolute left-[-24px] sm:left-[-28px] lg:left-[-22px] top-[42%] -translate-y-1/2 z-20 w-[84px] sm:w-[130px] lg:w-[170px] opacity-0"
+        aria-hidden="true">
+        <svg viewBox="0 0 260 520" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="w-full h-auto overflow-visible">
+          <defs>
+            <linearGradient id="goldBladeGradLeft" x1="-150" y1="-180" x2="40" y2="-90" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#e3b977" />
+              <stop offset="55%" stop-color="#c69650" />
+              <stop offset="100%" stop-color="#8d6226" stop-opacity="0.75" />
+            </linearGradient>
+            <!-- Single tapered crescent blade: flat chisel outer tail tapering to a razor-sharp inner tip -->
+            <path id="tapered-blade-left" d="M -140 -164 C -92 -208, -22 -182, 22 -96 C -24 -168, -88 -193, -131 -155 Z"
+              fill="url(#goldBladeGradLeft)" />
+          </defs>
+          <g transform="translate(8, 260)">
+            <g class="vortex-wheel-left">
+              <use href="#tapered-blade-left" transform="rotate(0)" />
+              <use href="#tapered-blade-left" transform="rotate(24)" />
+              <use href="#tapered-blade-left" transform="rotate(48)" />
+              <use href="#tapered-blade-left" transform="rotate(72)" />
+              <use href="#tapered-blade-left" transform="rotate(96)" />
+              <use href="#tapered-blade-left" transform="rotate(120)" />
+              <use href="#tapered-blade-left" transform="rotate(144)" />
+              <use href="#tapered-blade-left" transform="rotate(168)" />
+              <use href="#tapered-blade-left" transform="rotate(192)" />
+              <use href="#tapered-blade-left" transform="rotate(216)" />
+              <use href="#tapered-blade-left" transform="rotate(240)" />
+              <use href="#tapered-blade-left" transform="rotate(264)" />
+              <use href="#tapered-blade-left" transform="rotate(288)" />
+              <use href="#tapered-blade-left" transform="rotate(312)" />
+              <use href="#tapered-blade-left" transform="rotate(336)" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div id="spiral-right"
+        class="spiral-ornament absolute right-[-24px] sm:right-[-28px] lg:right-[-22px] top-[42%] -translate-y-1/2 z-20 w-[84px] sm:w-[130px] lg:w-[170px] opacity-0"
+        aria-hidden="true">
+        <svg viewBox="0 0 260 520" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="w-full h-auto overflow-visible">
+          <defs>
+            <linearGradient id="goldBladeGradRight" x1="-150" y1="-180" x2="40" y2="-90" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#e3b977" />
+              <stop offset="55%" stop-color="#c69650" />
+              <stop offset="100%" stop-color="#8d6226" stop-opacity="0.75" />
+            </linearGradient>
+            <path id="tapered-blade-right"
+              d="M -140 -164 C -92 -208, -22 -182, 22 -96 C -24 -168, -88 -193, -131 -155 Z"
+              fill="url(#goldBladeGradRight)" />
+          </defs>
+          <!-- Outer group mirrors horizontally with scale(-1, 1) so GSAP rotation on .vortex-wheel-right never breaks the mirror! -->
+          <g transform="translate(252, 260) scale(-1, 1)">
+            <g class="vortex-wheel-right">
+              <use href="#tapered-blade-right" transform="rotate(0)" />
+              <use href="#tapered-blade-right" transform="rotate(24)" />
+              <use href="#tapered-blade-right" transform="rotate(48)" />
+              <use href="#tapered-blade-right" transform="rotate(72)" />
+              <use href="#tapered-blade-right" transform="rotate(96)" />
+              <use href="#tapered-blade-right" transform="rotate(120)" />
+              <use href="#tapered-blade-right" transform="rotate(144)" />
+              <use href="#tapered-blade-right" transform="rotate(168)" />
+              <use href="#tapered-blade-right" transform="rotate(192)" />
+              <use href="#tapered-blade-right" transform="rotate(216)" />
+              <use href="#tapered-blade-right" transform="rotate(240)" />
+              <use href="#tapered-blade-right" transform="rotate(264)" />
+              <use href="#tapered-blade-right" transform="rotate(288)" />
+              <use href="#tapered-blade-right" transform="rotate(312)" />
+              <use href="#tapered-blade-right" transform="rotate(336)" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- 7D. CENTER HERO CONTENT -->
+      <div id="hero-center-stage"
+        class="relative z-30 w-full max-w-5xl mx-auto px-4 sm:px-8 pt-24 sm:pt-28 flex flex-col items-center text-center">
+        <div class="relative mb-2 sm:mb-3 flex flex-col items-center">
+          <div
+            class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs font-cinzel tracking-[0.35em] text-gold/85 uppercase mb-1 opacity-0"
+            id="trailer-chapter-tag">
+            <span>I</span>
+            <span class="w-6 sm:w-10 h-[1px] bg-gold/50"></span>
+            <span>EVERY INK TELLS A STORY</span>
+            <span class="w-6 sm:w-10 h-[1px] bg-gold/50"></span>
+            <span>X</span>
+          </div>
+
+          <svg id="self-writing-flourish" class="w-56 sm:w-80 h-8 sm:h-10 overflow-visible ink-glow"
+            viewBox="0 0 360 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="needle-path-top" class="ink-stroke-path"
+              d="M15 28 C65 6, 115 38, 180 18 C245 -2, 295 36, 345 14 M130 22 C165 34, 195 34, 230 22"
+              stroke="url(#calligraphyGold)" stroke-width="1.8" stroke-linecap="round" />
+            <defs>
+              <linearGradient id="calligraphyGold" x1="0" y1="0" x2="360" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#c99b52" stop-opacity="0.2" />
+                <stop offset="50%" stop-color="#ffe2a6" stop-opacity="1" />
+                <stop offset="100%" stop-color="#c99b52" stop-opacity="0.2" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <h1 id="hero-title-main"
+          class="font-cormorant text-[2.15rem] xs:text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.4rem] leading-[1.05] tracking-[0.06em] uppercase drop-shadow-[0_6px_24px_rgba(0,0,0,0.95)]">
+          <span class="inline-flex items-baseline">
+            <span class="char-reveal text-gold font-normal mr-0.5 sm:mr-1 text-[1.1em]">{</span>
+            <span class="char-reveal font-bold text-ivory tracking-[0.05em]">EXPRESS</span>
+            <span class="char-reveal text-gold font-normal ml-0.5 sm:ml-1 text-[1.1em]">}</span>
+          </span>
+          <span class="char-reveal font-light text-ivory/95 ml-1.5 sm:ml-4 tracking-[0.08em]">
+            YOURSELF
+          </span>
+        </h1>
+
+        <div id="hero-subtitle-line"
+          class="mt-2 sm:mt-4 flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-sm xs:text-base sm:text-2xl md:text-[1.75rem] lg:text-[2.05rem] tracking-[0.14em] uppercase font-cormorant font-light text-ivory/90">
+          <span class="sub-word">UNLEASH A NEW</span>
+          <span class="sub-word relative inline-block px-1">
+            <span class="dimension-word text-[1.08em]">DIMENSION</span>
+            <svg class="absolute -bottom-2 left-0 w-full h-3 overflow-visible pointer-events-none" viewBox="0 0 200 16"
+              fill="none">
+              <path class="ink-stroke-path" d="M4 11 C55 2, 145 15, 196 5" stroke="#c99b52" stroke-width="1.6"
+                stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="sub-word">OF ART</span>
+        </div>
+
+        <div id="hero-cta-row" class="mt-7 sm:mt-10 flex items-center justify-center gap-3 sm:gap-7 md:gap-10 w-full">
+          <svg class="w-20 xs:w-24 sm:w-36 md:w-44 h-6 sm:h-7 overflow-visible opacity-90" viewBox="0 0 180 28"
+            fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path class="ink-stroke-path" d="M22 14 H162" stroke="#f5f2eb" stroke-width="1.3" />
+            <path class="ink-stroke-path" d="M6 14 L20 7 L32 14 L20 21 Z M14 10 L26 14 L14 18 M22 7 L36 14 L22 21"
+              stroke="#f5f2eb" stroke-width="1.1" stroke-linejoin="round" />
+            <path class="ink-stroke-path" d="M148 10 L155 14 L148 18 L141 14 Z M160 8 L174 14 L160 20 L164 14 Z"
+              stroke="#c99b52" stroke-width="1.3" stroke-linejoin="round" />
+          </svg>
+
+          <a href="#booking-section" id="book-appointment-btn"
+            class="btn-gold-rounded px-6 sm:px-9 py-3 sm:py-3.5 text-xs sm:text-sm md:text-[15px] font-cinzel font-bold tracking-[0.14em] uppercase whitespace-nowrap">
+            Book Appointment
+          </a>
+
+          <svg class="w-20 xs:w-24 sm:w-36 md:w-44 h-6 sm:h-7 overflow-visible opacity-90 scale-x-[-1]"
+            viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path class="ink-stroke-path" d="M22 14 H162" stroke="#f5f2eb" stroke-width="1.3" />
+            <path class="ink-stroke-path" d="M6 14 L20 7 L32 14 L20 21 Z M14 10 L26 14 L14 18 M22 7 L36 14 L22 21"
+              stroke="#f5f2eb" stroke-width="1.1" stroke-linejoin="round" />
+            <path class="ink-stroke-path" d="M148 10 L155 14 L148 18 L141 14 Z M160 8 L174 14 L160 20 L164 14 Z"
+              stroke="#c99b52" stroke-width="1.3" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div id="scroll-trailer-quote" class="mt-6 sm:mt-8 opacity-0 translate-y-4 pointer-events-none">
+          <p class="font-calligraphy text-xl sm:text-3xl text-gold-light tracking-wide drop-shadow">
+            "Every mark is a myth carved in living ink..."
+          </p>
+        </div>
+      </div>
+
+      <!-- 7G. RAW TORN INK-BLEED EDGE AT THE BOTTOM -->
+      <div class="ink-edge-divider absolute bottom-[-2px] left-0 right-0 z-40 w-full overflow-hidden leading-none">
+        <svg class="relative block w-full h-10 sm:h-16 md:h-24" viewBox="0 0 1440 120" preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0,74 C120,98 210,32 340,68 C470,104 590,24 720,62 C850,100 980,28 1120,66 C1260,104 1360,42 1440,70 L1440,120 L0,120 Z"
+            fill="rgba(201, 155, 82, 0.22)" />
+          <path
+            d="M0,82 C135,106 225,44 355,76 C485,108 605,36 735,70 C865,104 995,38 1135,74 C1275,110 1365,52 1440,78 L1440,120 L0,120 Z"
+            fill="#050507" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         8. SESSION 02 — THE PORTFOLIO: A CINEMATIC VISUAL STORY
+         Inspired by Casa Momo (casamomo.at).
+         - Pinned 100dvh cinema stage controlled by scroll.
+         - Uses ONLY the 8 strongest, dark-luxury photographs curated from ./works.
+         - Continuous visual flow across 5 connected scenes:
+           Scene 1 (The First Impression) -> moves aside & anchors Scene 2 (The Details)
+           -> parts to reveal Scene 3 (The Masterpiece) from behind -> contracts into
+           Scene 4 (The Collection) -> clears center for Scene 5 ("Every piece tells a story.")
+         ====================================================================== -->
+    <section id="portfolio-section"
+      class="relative w-full h-[100dvh] min-h-[640px] bg-obsidian overflow-hidden select-none">
+      <!-- Subtle radial spotlight in the deep background that shifts with the scenes -->
+      <div id="portfolio-ambient-glow" class="pointer-events-none absolute inset-0 opacity-40"
+        style="background: radial-gradient(circle at 50% 50%, rgba(201, 155, 82, 0.09) 0%, rgba(5, 5, 7, 0.98) 70%);"
+        aria-hidden="true"></div>
+
+      <!-- Matching Left & Right Golden Tapered Vortex Arcs on the Portfolio Stage -->
+      <div id="portfolio-spiral-left"
+        class="spiral-ornament absolute left-[-26px] sm:left-[-30px] lg:left-[-24px] top-[44%] -translate-y-1/2 z-10 w-[80px] sm:w-[120px] lg:w-[155px] opacity-40"
+        aria-hidden="true">
+        <svg viewBox="0 0 260 520" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="w-full h-auto overflow-visible">
+          <g transform="translate(8, 260)">
+            <g class="vortex-wheel-left">
+              <use href="#tapered-blade-left" transform="rotate(0)" />
+              <use href="#tapered-blade-left" transform="rotate(24)" />
+              <use href="#tapered-blade-left" transform="rotate(48)" />
+              <use href="#tapered-blade-left" transform="rotate(72)" />
+              <use href="#tapered-blade-left" transform="rotate(96)" />
+              <use href="#tapered-blade-left" transform="rotate(120)" />
+              <use href="#tapered-blade-left" transform="rotate(144)" />
+              <use href="#tapered-blade-left" transform="rotate(168)" />
+              <use href="#tapered-blade-left" transform="rotate(192)" />
+              <use href="#tapered-blade-left" transform="rotate(216)" />
+              <use href="#tapered-blade-left" transform="rotate(240)" />
+              <use href="#tapered-blade-left" transform="rotate(264)" />
+              <use href="#tapered-blade-left" transform="rotate(288)" />
+              <use href="#tapered-blade-left" transform="rotate(312)" />
+              <use href="#tapered-blade-left" transform="rotate(336)" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div id="portfolio-spiral-right"
+        class="spiral-ornament absolute right-[-26px] sm:right-[-30px] lg:right-[-24px] top-[44%] -translate-y-1/2 z-10 w-[80px] sm:w-[120px] lg:w-[155px] opacity-40"
+        aria-hidden="true">
+        <svg viewBox="0 0 260 520" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="w-full h-auto overflow-visible">
+          <g transform="translate(252, 260) scale(-1, 1)">
+            <g class="vortex-wheel-right">
+              <use href="#tapered-blade-right" transform="rotate(0)" />
+              <use href="#tapered-blade-right" transform="rotate(24)" />
+              <use href="#tapered-blade-right" transform="rotate(48)" />
+              <use href="#tapered-blade-right" transform="rotate(72)" />
+              <use href="#tapered-blade-right" transform="rotate(96)" />
+              <use href="#tapered-blade-right" transform="rotate(120)" />
+              <use href="#tapered-blade-right" transform="rotate(144)" />
+              <use href="#tapered-blade-right" transform="rotate(168)" />
+              <use href="#tapered-blade-right" transform="rotate(192)" />
+              <use href="#tapered-blade-right" transform="rotate(216)" />
+              <use href="#tapered-blade-right" transform="rotate(240)" />
+              <use href="#tapered-blade-right" transform="rotate(264)" />
+              <use href="#tapered-blade-right" transform="rotate(288)" />
+              <use href="#tapered-blade-right" transform="rotate(312)" />
+              <use href="#tapered-blade-right" transform="rotate(336)" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- --------------------------------------------------------------------
+           8A. MINIMALIST SCENE PROGRESS RAIL (Left Edge on PC, Top-Left on Phone)
+           Shows which of the 5 visual chapters the visitor is moving through.
+           -------------------------------------------------------------------- -->
+      <div
+        class="pointer-events-none absolute left-4 sm:left-8 lg:left-12 top-20 sm:top-1/2 sm:-translate-y-1/2 z-40 flex sm:flex-col items-center sm:items-start gap-3 sm:gap-4">
+        <div class="font-cinzel text-[10px] sm:text-xs tracking-[0.3em] text-gold/80 uppercase flex items-center gap-2">
+          <span id="scene-counter-num" class="text-gold-light font-bold">01</span>
+          <span class="text-ivory/30">/</span>
+          <span class="text-ivory/40">04</span>
+        </div>
+
+        <!-- Vertical gold ink progress bar -->
+        <div class="story-progress-rail w-16 sm:w-[1.5px] h-[1.5px] sm:h-36 rounded-full overflow-hidden">
+          <div id="story-progress-bar" class="story-progress-fill w-full h-full scale-x-0 sm:scale-x-100 sm:scale-y-0">
+          </div>
+        </div>
+
+        <span id="scene-counter-label"
+          class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.28em] uppercase text-ivory/50 sm:[writing-mode:vertical-rl] sm:rotate-180">
+          THE FIRST IMPRESSION
+        </span>
+      </div>
+
+      <!-- Minimal "See All" Button on the Portfolio Stage -->
+      <button type="button" id="vault-teaser-btn"
+        class="btn-outline-gold absolute bottom-6 right-5 sm:bottom-10 sm:right-10 z-40 px-5 sm:px-6 py-2 text-[10px] sm:text-xs font-cinzel tracking-[0.2em] uppercase text-gold-light hover:text-ivory">
+        See All
+      </button>
+
+      <!-- --------------------------------------------------------------------
+           8B. CONTINUOUS 3D ARTWORK STAGE (#cinema-stage)
+           All 8 curated photographs live together inside this single stage so
+           they can overlap, emerge from behind one another, and transform
+           without ever cutting like a slideshow.
+           -------------------------------------------------------------------- -->
+      <div id="cinema-stage"
+        class="relative w-full h-full max-w-[1440px] mx-auto flex items-center justify-center overflow-hidden">
+
+        <!-- ==================================================================
+             SCENE 1 ARTWORK — "THE FIRST IMPRESSION" (Nocturne Spine & Owl)
+             File: works/xyz-shoot-A3U8bb4Uebg-unsplash.jpg (Natural 2:3 Portrait)
+             - Starts in the center with a slow mask reveal & expansion.
+             - In Scene 2, it does NOT disappear: it smoothly glides to the left
+               background as Scene 2 emerges from behind it!
+             ================================================================== -->
+        <div id="art-scene-1" data-work-id="curated-01"
+          class="cinema-art-item z-20 w-[56vw] max-w-[215px] sm:w-[42vw] sm:max-w-[440px] lg:max-w-[480px]">
+          <div class="cinema-photo-frame aspect-[2/3]">
+            <img id="img-scene-1" src="works/xyz-shoot-A3U8bb4Uebg-unsplash.jpg"
+              alt="Nocturne Spine & Sacred Owl Tattoo"
+              class="w-full h-full object-cover object-center will-change-transform" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-obsidian/20"></div>
+            <div class="art-hover-pill absolute bottom-3 right-3 z-20">
+              <span
+                class="btn-outline-gold px-3 py-1 text-[9px] sm:text-[10px] font-cinzel tracking-[0.2em] uppercase text-gold-light">
+                Book a Session
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             SCENE 2 ARTWORKS — "THE DETAILS" (3 Overlapping Complementary Works)
+             - #art-scene-2a: The Needle's Ritual (haberdoedas-SQlGRQutkOg)
+             - #art-scene-2b: The All-Seeing Eye (haberdoedas-D2y8vWUm0LA)
+             - #art-scene-2c: Somnium Tuum Winged Script (onur-senay)
+             They emerge from behind Scene 1 in an overlapping composition, and
+             later part outward as Scene 3 (The Masterpiece) rises from behind them!
+             ================================================================== -->
+        <!-- Scene 2A: Black-gloved hand stippling sacred geometry -->
+        <div id="art-scene-2a" data-work-id="curated-02"
+          class="cinema-art-item z-[15] w-[40vw] max-w-[155px] sm:w-[28vw] sm:max-w-[310px] opacity-0">
+          <div class="cinema-photo-frame aspect-[3/4]">
+            <img id="img-scene-2a" src="works/haberdoedas-SQlGRQutkOg-unsplash.jpg"
+              alt="The Needle's Ritual — Stippling Precision"
+              class="w-full h-full object-cover object-center will-change-transform" />
+            <div class="art-hover-pill absolute bottom-3 right-3 z-20">
+              <span
+                class="btn-outline-gold px-3 py-1 text-[9px] font-cinzel tracking-[0.2em] uppercase text-gold-light">
+                Book a Session
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scene 2B: Macro Stippled All-Seeing Eye (Overlaps Scene 2A) -->
+        <div id="art-scene-2b" data-work-id="curated-03"
+          class="cinema-art-item z-[25] w-[42vw] max-w-[165px] sm:w-[31vw] sm:max-w-[350px] opacity-0">
+          <div class="cinema-photo-frame aspect-[3/4]">
+            <img id="img-scene-2b" src="works/haberdoedas-D2y8vWUm0LA-unsplash.jpg"
+              alt="The All-Seeing Eye — Fine-Line Dotwork Masterpiece"
+              class="w-full h-full object-cover object-center will-change-transform" />
+            <div class="art-hover-pill absolute bottom-3 right-3 z-20">
+              <span
+                class="btn-outline-gold px-3 py-1 text-[9px] font-cinzel tracking-[0.2em] uppercase text-gold-light">
+                Book a Session
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scene 2C: Somnium Tuum Winged Shoulder Inscription -->
+        <div id="art-scene-2c" data-work-id="curated-04"
+          class="cinema-art-item z-20 w-[38vw] max-w-[148px] sm:w-[25vw] sm:max-w-[285px] opacity-0">
+          <div class="cinema-photo-frame aspect-[2/3]">
+            <img id="img-scene-2c" src="works/onur-senay-WYKX7bLH0Is-unsplash.jpg"
+              alt="Somnium Tuum — Winged Latin Inscription"
+              class="w-full h-full object-cover object-center will-change-transform" />
+            <div class="art-hover-pill absolute bottom-3 right-3 z-20">
+              <span
+                class="btn-outline-gold px-3 py-1 text-[9px] font-cinzel tracking-[0.2em] uppercase text-gold-light">
+                Book a Session
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             SCENE 3 ARTWORK — "THE MASTERPIECE" (The Fallen Seraph Full Backpiece)
+             File: works/darren-nunis-ftoD84_RRdM-unsplash.jpg
+             - Emerges from behind the parting Scene 2 photographs to dominate
+               the screen in Scene 3.
+             - In Scene 4, instead of disappearing, it contracts and moves into
+               the upper-left anchor position of The Collection!
+             ================================================================== -->
+        <div id="art-scene-3" data-work-id="curated-05"
+          class="cinema-art-item z-10 w-[64vw] max-w-[245px] sm:w-[48vw] sm:max-w-[540px] lg:max-w-[600px] opacity-0">
+          <div class="cinema-photo-frame aspect-[3/4] border border-gold/25">
+            <img id="img-scene-3" src="works/darren-nunis-ftoD84_RRdM-unsplash.jpg"
+              alt="The Fallen Seraph — Monumental Full Back Tattoo"
+              class="w-full h-full object-cover object-[50%_18%] will-change-transform" />
+            <!-- Melts the bottom waistband into pure obsidian darkness -->
+            <div class="masterpiece-vignette absolute inset-0 pointer-events-none"></div>
+            <div class="art-hover-pill absolute bottom-4 right-4 z-20">
+              <span
+                class="btn-outline-gold px-3.5 py-1.5 text-[10px] font-cinzel tracking-[0.2em] uppercase text-gold-light">
+                Book a Session
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             SCENE 4 ARTWORKS — "THE COLLECTION" (Curated Editorial Arrangement)
+             - Joins Scene 3 (which stays on stage!) to form a 4-piece asymmetric
+               floating composition—never a conventional gallery grid.
+             - #art-scene-4a: Golden Hour Roman Numerals (allef-vinicius)
+             - #art-scene-4b: The Vitruvian Awakening (dylan-sauerwein)
+             - #art-scene-4c: Golden Dragon Sovereign (martin-podsiad)
+             ================================================================== -->
+        <!-- Scene 4A: Golden Hour Inscription (Bottom-Left Overlapping) -->
+        <div id="art-scene-4a" data-work-id="curated-06"
+          class="cinema-art-item z-30 w-[36vw] max-w-[140px] sm:w-[24vw] sm:max-w-[270px] opacity-0">
+          <div class="cinema-photo-frame aspect-[2/3]">
+            <img src="works/allef-vinicius-hxNiXP498UI-unsplash.jpg"
+              alt="The Golden Hour Inscription — Roman Numerals & Filigree"
+              class="w-full h-full object-cover object-center" />
+            <div class="art-hover-pill absolute bottom-2.5 right-2.5 z-20">
+              <span
+                class="btn-outline-gold px-2.5 py-1 text-[9px] font-cinzel tracking-[0.18em] uppercase text-gold-light">
+                Book a Session
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scene 4B: The Vitruvian Awakening (Center-Right Editorial Portrait) -->
+        <div id="art-scene-4b" data-work-id="curated-07"
+          class="cinema-art-item z-[25] w-[42vw] max-w-[162px] sm:w-[28vw] sm:max-w-[330px] opacity-0">
+          <div class="cinema-photo-frame aspect-[4/5]">
+            <img src="works/dylan-sauerwein-j4n6xTkVjyY-unsplash.jpg"
+              alt="The Vitruvian Awakening — Full Torso Sacred Realism"
+              class="w-full h-full object-cover object-[50%_20%]" />
+            <div class="art-hover-pill absolute bottom-2.5 right-2.5 z-20">
+              <span
+                class="btn-outline-gold px-2.5 py-1 text-[9px] font-cinzel tracking-[0.18em] uppercase text-gold-light">
+                Book a Session
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scene 4C: Golden Dragon Sovereign (Upper-Right / Far-Right Accent) -->
+        <div id="art-scene-4c" data-work-id="curated-08"
+          class="cinema-art-item z-20 w-[40vw] max-w-[155px] sm:w-[26vw] sm:max-w-[310px] opacity-0">
+          <div class="cinema-photo-frame aspect-[5/4]">
+            <img src="works/martin-podsiad-BP7vxOeFd04-unsplash.jpg"
+              alt="Golden Dragon Sovereign — Obsidian & Gold Backpiece"
+              class="w-full h-full object-cover object-[35%_50%]" />
+            <div class="art-hover-pill absolute bottom-2.5 right-2.5 z-20">
+              <span
+                class="btn-outline-gold px-2.5 py-1 text-[9px] font-cinzel tracking-[0.18em] uppercase text-gold-light">
+                Book a Session
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             8C. ENGRAVED SCENE TYPOGRAPHY OVERLAYS (SCENES 1 TO 4)
+             Minimal, luxurious captions that appear as though engraved or written
+             in gold ink without distracting from the photographs.
+             ================================================================== -->
+
+        <!-- Caption for Scene 1: The First Impression -->
+        <div id="caption-scene-1"
+          class="scene-caption-block absolute bottom-16 sm:bottom-14 left-5 sm:left-24 z-[35] max-w-md opacity-0">
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.35em] text-gold uppercase block mb-1">
+            SCENE I — THE FIRST IMPRESSION
+          </span>
+          <h3 class="font-decorative text-2xl sm:text-4xl text-ivory tracking-wider">
+            Emerging From Shadow
+          </h3>
+          <svg class="w-40 sm:w-52 h-3 mt-1 overflow-visible" viewBox="0 0 200 12" fill="none">
+            <path id="line-scene-1" class="scene-engraved-line" d="M2 8 C60 1, 130 11, 198 4" stroke="#c99b52"
+              stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <!-- Caption for Scene 2: The Details -->
+        <div id="caption-scene-2"
+          class="scene-caption-block absolute bottom-16 sm:bottom-14 right-5 sm:right-16 text-right z-[35] max-w-md opacity-0">
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.35em] text-gold uppercase block mb-1">
+            SCENE II — THE DETAILS
+          </span>
+          <h3 class="font-decorative text-2xl sm:text-4xl text-ivory tracking-wider">
+            Sacred Precision
+          </h3>
+          <p class="font-cormorant italic text-ivory/75 text-base sm:text-lg mt-0.5">
+            Where the needle meets living geometry.
+          </p>
+          <svg class="w-40 sm:w-52 h-3 mt-1 ml-auto overflow-visible" viewBox="0 0 200 12" fill="none">
+            <path id="line-scene-2" class="scene-engraved-line" d="M2 4 C70 11, 140 1, 198 8" stroke="#c99b52"
+              stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <!-- Caption for Scene 3: The Masterpiece -->
+        <div id="caption-scene-3"
+          class="scene-caption-block absolute bottom-9 sm:bottom-12 left-1/2 -translate-x-1/2 text-center z-[35] w-full max-w-xl px-4 opacity-0">
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.38em] text-gold-light uppercase block mb-1">
+            SCENE III — THE MASTERPIECE
+          </span>
+          <h3
+            class="font-decorative text-3xl sm:text-5xl text-ivory tracking-[0.1em] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+            The Fallen Seraph
+          </h3>
+          <svg class="w-48 sm:w-64 h-4 mx-auto mt-1.5 overflow-visible" viewBox="0 0 240 14" fill="none">
+            <path id="line-scene-3" class="scene-engraved-line" d="M10 9 C75 1, 165 13, 230 5" stroke="#f0d290"
+              stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <!-- Caption for Scene 4: The Collection -->
+        <div id="caption-scene-4"
+          class="scene-caption-block absolute top-20 sm:top-24 left-1/2 -translate-x-1/2 text-center z-[35] w-full max-w-lg px-4 opacity-0">
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.36em] text-gold uppercase block mb-1">
+            SCENE IV — THE COLLECTION
+          </span>
+          <h3 class="font-decorative text-2xl sm:text-3xl text-ivory tracking-widest">
+            A Tapestry of Living Ink
+          </h3>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         9. SESSION 03 — PART 01: MEET THE ARTIST (SPYKER-INSPIRED SCROLL)
+         Pinned 100dvh cinematic stage where the artist's portrait emerges
+         from shadow, glides into position, and progressively reveals his
+         background, experience, philosophy, and specialties as you scroll.
+         ====================================================================== -->
+    <section id="artist-section"
+      class="relative w-full h-[100dvh] min-h-[650px] bg-obsidian overflow-hidden select-none border-t border-gold/10">
+      <!-- Subtle dark-gold ambient glow behind the artist -->
+      <div class="pointer-events-none absolute inset-0"
+        style="background: radial-gradient(circle at 35% 45%, rgba(201, 155, 82, 0.08) 0%, rgba(5, 5, 7, 0.98) 68%);"
+        aria-hidden="true"></div>
+
+      <div
+        class="relative z-10 w-full h-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-14 pt-16 sm:pt-20 pb-6 flex items-center justify-center">
+        <div class="relative w-full grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-6 md:gap-12 items-center">
+
+          <!-- LEFT: ARTIST PORTRAIT (Starts centered & large, glides left on scroll) -->
+          <div id="artist-portrait-wrap" class="md:col-span-5 flex flex-col items-center justify-center relative z-20">
+            <div class="artist-torn-frame w-[38vw] max-w-[155px] sm:w-[260px] md:w-full md:max-w-[400px] aspect-[3/4]">
+              <img id="artist-portrait-img" src="assets/artist-portrait.jpg" alt="Lead Tattoo Artist — TenX Ink"
+                class="w-full h-full object-cover object-top will-change-transform" />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-obsidian/20 pointer-events-none">
+              </div>
+            </div>
+
+            <!-- Engraved signature caption beneath portrait -->
+            <p id="artist-signature"
+              class="font-calligraphy text-xl sm:text-3xl text-gold-light/90 mt-1 sm:mt-2 opacity-0">
+              Etharokwara Maxwell
+            </p>
+          </div>
+
+          <!-- RIGHT: PROGRESSIVE SCROLL-REVEALED ARTIST STORY -->
+          <div class="md:col-span-7 flex flex-col justify-center text-left space-y-2 sm:space-y-4 relative z-20">
+            <!-- Step 1: Section Eyebrow & Heading -->
+            <div id="artist-intro-block">
+              <span class="font-cinzel text-[9px] sm:text-xs tracking-[0.34em] text-gold uppercase block mb-1">
+                SESSION III • THE PERSON BEHIND THE INK
+              </span>
+              <h2 class="font-decorative text-2xl sm:text-5xl lg:text-6xl text-ivory tracking-[0.08em] uppercase">
+                MEET THE <span class="text-gold">ARTIST</span>
+              </h2>
+              <svg class="w-36 sm:w-60 h-2.5 sm:h-3 mt-1 overflow-visible" viewBox="0 0 240 14" fill="none">
+                <path id="artist-heading-line" class="scene-engraved-line" d="M2 9 C70 1, 160 13, 238 5"
+                  stroke="#c99b52" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+
+            <!-- Step 2: Artist Name, Role & Experience -->
+            <div id="artist-identity-block" class="opacity-0 translate-y-4">
+              <h3 class="font-cinzel text-base sm:text-2xl tracking-[0.16em] text-gold-light uppercase font-bold">
+                ETHAROKWARA MAXWELL
+              </h3>
+              <p class="font-cinzel text-[10px] sm:text-xs tracking-[0.2em] text-ivory/65 uppercase mt-0.5">
+                Founder &amp; Lead Tattoo Artist • TenX Ink Studio
+              </p>
+            </div>
+
+            <!-- Step 3: Background & Achievements -->
+            <div id="artist-bio-block" class="opacity-0 translate-y-4 space-y-1.5 sm:space-y-2.5 max-w-xl">
+              <p class="font-cormorant text-sm sm:text-xl text-ivory/85 leading-snug sm:leading-relaxed">
+                [Professional Background Placeholder — Share the artist's journey from early sketching to mastering
+                needle precision, studio standards, and bespoke custom composition.]
+              </p>
+              <p class="font-cormorant text-xs sm:text-base text-gold/85 italic">
+                Achievements: [Awards, Conventions, or Notable Milestones Placeholder]
+              </p>
+            </div>
+
+            <!-- Step 4: Philosophy & Specialties -->
+            <div id="artist-philosophy-block"
+              class="opacity-0 translate-y-4 pt-2 sm:pt-3 border-t border-gold/20 max-w-xl">
+              <p class="font-calligraphy text-xl sm:text-3xl text-gold-light mb-1.5 sm:mb-2">
+                “Every line is permanence; every shadow is emotion.”
+              </p>
+              <div class="flex flex-wrap gap-1.5 sm:gap-2">
+                <span
+                  class="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-gold/30 bg-charcoal/80 font-cinzel text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ivory/80">
+                  Black &amp; Grey Realism
+                </span>
+                <span
+                  class="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-gold/30 bg-charcoal/80 font-cinzel text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ivory/80">
+                  Sacred Geometry
+                </span>
+                <span
+                  class="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-gold/30 bg-charcoal/80 font-cinzel text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ivory/80">
+                  Fine-Line &amp; Custom Sleeves
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         10. SESSION 03 — PART 02: "WANT TO BECOME A TATTOO ARTIST?"
+         Includes:
+         10A. Pinned Cinematic Intro (Spyker / Casa Momo layered process reveal)
+         10B. Pictorial Craft & Training Selector (Inspired by "Our Services")
+         10C. Course Plans Comparison + Hidden Enrollment Trigger
+         ====================================================================== -->
+    <section id="mentorship-section" class="relative bg-obsidian border-t border-gold/15">
+
+      <!-- 10A. PINNED CINEMATIC INTRO STAGE -->
+      <div id="mentorship-intro-stage"
+        class="relative w-full h-[100dvh] min-h-[640px] overflow-hidden flex items-center justify-center select-none">
+        <!-- Layered Background Process Imagery (Progressively revealed on scroll) -->
+        <div class="absolute inset-0 z-0 overflow-hidden">
+          <img id="mentor-bg-1" src="works/collins-lesulie-PWK6CeCJtJw-unsplash.jpg"
+            alt="Tattoo Artist Working with Rotary Machine"
+            class="w-full h-full object-cover object-center opacity-40 brightness-50 scale-110 will-change-transform" />
+          <div class="hero-vignette absolute inset-0"></div>
+        </div>
+
+        <!-- Floating Secondary Process Photos (Emerge on scroll) -->
+        <div id="mentor-float-left"
+          class="hidden sm:block absolute left-8 lg:left-16 bottom-14 z-10 w-48 lg:w-64 opacity-0 pointer-events-none">
+          <div class="artist-torn-frame aspect-[3/4]">
+            <img src="works/haberdoedas-SQlGRQutkOg-unsplash.jpg" alt="Needle Stippling Precision"
+              class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <div id="mentor-float-right"
+          class="hidden sm:block absolute right-8 lg:right-16 top-20 z-10 w-52 lg:w-72 opacity-0 pointer-events-none">
+          <div class="artist-torn-frame aspect-[4/3]">
+            <img src="works/jose-pinto-zgQnM2ghzXU-unsplash.jpg" alt="Tattoo Studio & Pigments"
+              class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <!-- Center Headline & Progressive Narrative -->
+        <div class="relative z-20 max-w-4xl mx-auto px-5 text-center">
+          <span id="mentor-eyebrow"
+            class="font-cinzel text-[10px] sm:text-xs tracking-[0.4em] text-gold uppercase block mb-3 opacity-0">
+            THE NEXT GENERATION • DIRECT MENTORSHIP
+          </span>
+
+          <h2 id="mentor-main-headline"
+            class="font-decorative text-3xl xs:text-4xl sm:text-6xl lg:text-7xl text-ivory tracking-[0.08em] leading-tight uppercase drop-shadow-[0_8px_30px_rgba(0,0,0,0.95)] opacity-0">
+            WANT TO BECOME A <span class="text-gold">TATTOO ARTIST?</span>
+          </h2>
+
+          <svg class="w-56 sm:w-80 h-6 mx-auto mt-3 mb-5 overflow-visible ink-glow" viewBox="0 0 320 24" fill="none">
+            <path id="mentor-headline-line" class="scene-engraved-line" d="M10 14 C95 2, 225 22, 310 8" stroke="#c99b52"
+              stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+
+          <p id="mentor-subcopy"
+            class="font-cormorant text-lg sm:text-2xl text-ivory/85 max-w-2xl mx-auto leading-relaxed opacity-0">
+            Learn the discipline directly inside a working dark-luxury studio. Master machine control, skin anatomy,
+            chiaroscuro shading, and turn raw passion into permanent art.
+          </p>
+        </div>
+      </div>
+
+      <!-- 10B. PICTORIAL CRAFT SHOWCASE (INSPIRED BY YOUR "OUR SERVICES" ATTACHMENT) -->
+      <div id="pictorial-craft-stage" class="relative py-20 sm:py-28 px-4 sm:px-8 max-w-[1280px] mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.35em] text-gold uppercase block mb-2">
+            THE CRAFT YOU WILL MASTER
+          </span>
+          <h3 class="font-decorative text-2xl sm:text-4xl text-ivory tracking-wider uppercase">
+            Inside The Training Process
+          </h3>
+          <svg class="w-44 h-4 mx-auto mt-2 overflow-visible" viewBox="0 0 180 14" fill="none">
+            <path class="ink-stroke-path" d="M6 8 C55 1, 125 13, 174 6" stroke="#c99b52" stroke-width="1.4"
+              stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <!-- Pictorial Thumbnails Strip (4 clickable stages) -->
+        <div id="pictorial-thumbs-row"
+          class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-4xl mx-auto mb-8 sm:mb-10">
+          <!-- Populated cleanly by script.js -->
+        </div>
+
+        <!-- Large Active Pictorial Feature with Prev / Next Arrows -->
+        <div class="relative max-w-4xl mx-auto flex items-center gap-3 sm:gap-6">
+          <button id="pictorial-prev-btn" type="button"
+            class="btn-outline-gold shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-ivory hover:text-gold text-sm sm:text-base"
+            aria-label="Previous training stage">
+            ←
+          </button>
+
+          <div class="flex-1">
+            <div class="artist-torn-frame aspect-[16/10] sm:aspect-[16/9] relative">
+              <img id="pictorial-active-img" src="works/collins-lesulie-PWK6CeCJtJw-unsplash.jpg"
+                alt="Training Process Highlight" class="w-full h-full object-cover transition-opacity duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-7">
+                <span id="pictorial-active-tag"
+                  class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold block mb-1">
+                  STAGE 01
+                </span>
+                <h4 id="pictorial-active-title" class="font-decorative text-lg sm:text-2xl text-ivory mb-1">
+                  Machine &amp; Needle Control
+                </h4>
+                <p id="pictorial-active-desc" class="font-cormorant text-sm sm:text-base text-ivory/80 max-w-xl">
+                  Understand rotary &amp; coil mechanics, needle depth, voltage calibration, and steady hand posture.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <button id="pictorial-next-btn" type="button"
+            class="btn-outline-gold shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-ivory hover:text-gold text-sm sm:text-base"
+            aria-label="Next training stage">
+            →
+          </button>
+        </div>
+      </div>
+
+      <!-- 10C. COURSE PLANS COMPARISON (PLACEHOLDERS WHERE DETAILS NOT SUPPLIED) -->
+      <div id="training-plans-stage"
+        class="relative py-16 sm:py-24 px-4 sm:px-8 max-w-[1320px] mx-auto border-t border-gold/10">
+        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.35em] text-gold uppercase block mb-2">
+            TRAINING PATHWAYS
+          </span>
+          <h3 class="font-decorative text-2xl sm:text-4xl lg:text-5xl text-ivory tracking-wider uppercase">
+            Choose Your Mentorship Plan
+          </h3>
+          <p class="font-cormorant text-base sm:text-lg text-ivory/70 mt-2">
+            Compare the available training tracks below. Click any enrollment button to open your personal application.
+          </p>
+        </div>
+
+        <!-- 3 Comparable Plans (Horizontal swipe row on phone, 3-column grid on desktop) -->
+        <div
+          id="training-plans-cards"
+          data-lenis-prevent
+          class="flex lg:grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 items-stretch"
+        >
+
+          <!-- PLAN 1 -->
+          <article class="course-plan-card shrink-0 w-[82vw] sm:w-[58vw] lg:w-auto snap-center p-5 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold">
+                  Beginner Level
+                </span>
+                <span
+                  class="px-3 py-1 rounded-full border border-gold/25 text-[10px] font-cinzel tracking-widest uppercase text-ivory/75">
+                  [Duration Placeholder]
+                </span>
+              </div>
+
+              <h4 class="font-decorative text-2xl text-ivory mb-2">
+                [Course Name — Foundation]
+              </h4>
+              <div
+                class="font-cormorant text-3xl sm:text-4xl text-gold-light font-bold mb-5 pb-4 border-b border-gold/15">
+                [Price Placeholder]
+              </div>
+
+              <p class="font-cinzel text-[10px] tracking-[0.22em] uppercase text-gold/85 mb-2.5">
+                What You Will Learn
+              </p>
+              <ul class="space-y-2 text-sm sm:text-base font-cormorant text-ivory/80 mb-5">
+                <li>• [Curriculum Topic 1 Placeholder]</li>
+                <li>• [Curriculum Topic 2 Placeholder]</li>
+                <li>• [Hygiene, Stencil &amp; Machine Setup Placeholder]</li>
+              </ul>
+
+              <div class="rounded-xl bg-obsidian/70 border border-gold/15 p-3.5 mb-6">
+                <span class="font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold block mb-1">
+                  Practical Training Included
+                </span>
+                <p class="text-xs sm:text-sm font-cormorant text-ivory/75">
+                  [Practical Hours / Synthetic Skin Practice Placeholder]
+                </p>
+              </div>
+            </div>
+
+            <button type="button" data-enroll-plan="[Course Name — Foundation]"
+              class="enroll-trigger-btn btn-outline-gold w-full py-3 px-6 font-cinzel text-xs font-bold tracking-[0.18em] uppercase text-ivory hover:text-gold-light">
+              Enroll in This Plan
+            </button>
+          </article>
+
+          <!-- PLAN 2 (FEATURED) -->
+          <article class="course-plan-card is-featured-plan shrink-0 w-[82vw] sm:w-[58vw] lg:w-auto snap-center p-5 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold-light font-bold">
+                  Intermediate Level
+                </span>
+                <span
+                  class="px-3 py-1 rounded-full border border-gold/45 bg-gold/10 text-[10px] font-cinzel tracking-widest uppercase text-gold-light">
+                  [Duration Placeholder]
+                </span>
+              </div>
+
+              <h4 class="font-decorative text-2xl text-ivory mb-2">
+                [Course Name — Studio Craft]
+              </h4>
+              <div
+                class="font-cormorant text-3xl sm:text-4xl text-gold-light font-bold mb-5 pb-4 border-b border-gold/20">
+                [Price Placeholder]
+              </div>
+
+              <p class="font-cinzel text-[10px] tracking-[0.22em] uppercase text-gold/85 mb-2.5">
+                What You Will Learn
+              </p>
+              <ul class="space-y-2 text-sm sm:text-base font-cormorant text-ivory/85 mb-5">
+                <li>• [Shading, Contrast &amp; Line Weight Placeholder]</li>
+                <li>• [Portrait &amp; Custom Design Flow Placeholder]</li>
+                <li>• [Client Consultation &amp; Studio Workflow Placeholder]</li>
+              </ul>
+
+              <div class="rounded-xl bg-obsidian/70 border border-gold/25 p-3.5 mb-6">
+                <span class="font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold block mb-1">
+                  Practical Training Included
+                </span>
+                <p class="text-xs sm:text-sm font-cormorant text-ivory/80">
+                  [Guided Practical Sessions &amp; Live Shadowing Placeholder]
+                </p>
+              </div>
+            </div>
+
+            <button type="button" data-enroll-plan="[Course Name — Studio Craft]"
+              class="enroll-trigger-btn btn-gold-rounded w-full py-3.5 px-6 font-cinzel text-xs font-bold tracking-[0.18em] uppercase">
+              Enroll in This Plan
+            </button>
+          </article>
+
+          <!-- PLAN 3 -->
+          <article class="course-plan-card shrink-0 w-[82vw] sm:w-[58vw] lg:w-auto snap-center p-5 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold">
+                  Advanced / 1-on-1 Level
+                </span>
+                <span
+                  class="px-3 py-1 rounded-full border border-gold/25 text-[10px] font-cinzel tracking-widest uppercase text-ivory/75">
+                  [Duration Placeholder]
+                </span>
+              </div>
+
+              <h4 class="font-decorative text-2xl text-ivory mb-2">
+                [Course Name — Master Mentorship]
+              </h4>
+              <div
+                class="font-cormorant text-3xl sm:text-4xl text-gold-light font-bold mb-5 pb-4 border-b border-gold/15">
+                [Price Placeholder]
+              </div>
+
+              <p class="font-cinzel text-[10px] tracking-[0.22em] uppercase text-gold/85 mb-2.5">
+                What You Will Learn
+              </p>
+              <ul class="space-y-2 text-sm sm:text-base font-cormorant text-ivory/80 mb-5">
+                <li>• [Realism, Sacred Geometry &amp; Large Pieces Placeholder]</li>
+                <li>• [Personal Artistic Style &amp; Portfolio Building Placeholder]</li>
+                <li>• [1-on-1 Critique with Lead Artist Placeholder]</li>
+              </ul>
+
+              <div class="rounded-xl bg-obsidian/70 border border-gold/15 p-3.5 mb-6">
+                <span class="font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold block mb-1">
+                  Practical Training Included
+                </span>
+                <p class="text-xs sm:text-sm font-cormorant text-ivory/75">
+                  [Supervised Live Studio Practice Placeholder]
+                </p>
+              </div>
+            </div>
+
+            <button type="button" data-enroll-plan="[Course Name — Master Mentorship]"
+              class="enroll-trigger-btn btn-outline-gold w-full py-3 px-6 font-cinzel text-xs font-bold tracking-[0.18em] uppercase text-ivory hover:text-gold-light">
+              Enroll in This Plan
+            </button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         11. FINAL SESSION — SECTION 01: CLIENT TESTIMONIALS
+         Inspired by Reference 1: Torn-ink top & bottom edges, faded tattoo
+         process background photography, decorative quotation marks, and a
+         smooth slider with clearly marked placeholders.
+         ====================================================================== -->
+    <section id="testimonials-section"
+      class="relative py-28 sm:py-36 px-4 sm:px-8 overflow-hidden bg-obsidian select-none">
+      <!-- Top Torn-Ink Edge -->
+      <div
+        class="pointer-events-none absolute top-[-1px] left-0 right-0 z-20 w-full overflow-hidden leading-none rotate-180">
+        <svg class="relative block w-full h-8 sm:h-14" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,74 C120,98 210,32 340,68 C470,104 590,24 720,62 C850,100 980,28 1120,66 C1260,104 1360,42 1440,70 L1440,120 L0,120 Z"
+            fill="#050507" />
+        </svg>
+      </div>
+
+      <!-- Background Faded Tattoo Photo + Gold Chiaroscuro Wash -->
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <img id="testimonial-bg-img" src="works/haberdoedas-SQlGRQutkOg-unsplash.jpg" alt="" loading="lazy"
+          class="w-full h-full object-cover object-center opacity-15 scale-105 will-change-transform" />
+        <div class="testimonial-gold-wash absolute inset-0"></div>
+      </div>
+
+      <!-- Content Container -->
+      <div id="testimonials-content" class="relative z-10 max-w-4xl mx-auto text-center">
+        <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.38em] text-gold uppercase block mb-2">
+          CLIENT STORIES
+        </span>
+        <h2 class="font-decorative text-3xl sm:text-5xl text-ivory tracking-[0.08em] uppercase">
+          WHAT OUR CLIENTS SAY
+        </h2>
+
+        <!-- Ornamental Flourish -->
+        <div class="flex justify-center mt-3 mb-10">
+          <svg class="w-48 sm:w-64 h-6 overflow-visible ink-glow" viewBox="0 0 240 28" fill="none">
+            <path id="testimonial-flourish-line" class="scene-engraved-line"
+              d="M12 14 C55 2, 85 24, 120 14 C155 4, 185 26, 228 14" stroke="#c99b52" stroke-width="1.5"
+              stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <!-- Testimonial Slider Card -->
+        <div class="relative px-7 sm:px-14">
+          <!-- Decorative Quotation Marks -->
+          <span
+            class="font-cormorant text-6xl sm:text-8xl text-gold/30 leading-none absolute -top-6 left-0 sm:left-4 select-none"
+            aria-hidden="true">“</span>
+          <span
+            class="font-cormorant text-6xl sm:text-8xl text-gold/30 leading-none absolute -bottom-10 right-0 sm:right-4 select-none"
+            aria-hidden="true">”</span>
+
+          <div id="testimonial-slide-body" class="transition-all duration-500">
+            <p id="testimonial-quote"
+              class="font-cormorant italic text-xl sm:text-2xl md:text-[1.65rem] text-ivory/90 leading-relaxed max-w-2xl mx-auto mb-7">
+              “[Client Review Placeholder 1 — Actual verified client testimonial about the studio atmosphere, line
+              precision, and healing experience will appear here.]”
+            </p>
+            <h4 id="testimonial-author"
+              class="font-cinzel text-sm sm:text-base tracking-[0.24em] uppercase text-gold-light font-bold">
+              [CLIENT NAME PLACEHOLDER 1]
+            </h4>
+            <p id="testimonial-role"
+              class="font-cinzel text-[10px] sm:text-xs tracking-[0.2em] uppercase text-ivory/50 mt-1">
+              [Optional Designation / Piece Type]
+            </p>
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="mt-10 flex items-center justify-center gap-4">
+          <button id="testimonial-prev-btn" type="button"
+            class="btn-outline-gold w-10 h-10 flex items-center justify-center text-ivory hover:text-gold text-sm"
+            aria-label="Previous testimonial">
+            ←
+          </button>
+
+          <div id="testimonial-dots" class="flex items-center gap-2"></div>
+
+          <button id="testimonial-next-btn" type="button"
+            class="btn-outline-gold w-10 h-10 flex items-center justify-center text-ivory hover:text-gold text-sm"
+            aria-label="Next testimonial">
+            →
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Torn-Ink Edge -->
+      <div class="pointer-events-none absolute bottom-[-1px] left-0 right-0 z-20 w-full overflow-hidden leading-none">
+        <svg class="relative block w-full h-8 sm:h-14" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,74 C120,98 210,32 340,68 C470,104 590,24 720,62 C850,100 980,28 1120,66 C1260,104 1360,42 1440,70 L1440,120 L0,120 Z"
+            fill="#050507" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         12. FINAL SESSION — SECTION 02: FREQUENTLY ASKED QUESTIONS
+         Inspired by Reference 2: Dark obsidian backdrop, controlled accordion
+         (only one open at a time), plus/minus icons, and subtle divider lines.
+         ====================================================================== -->
+    <section id="faq-section" class="relative bg-obsidian py-20 sm:py-28 px-4 sm:px-8 border-t border-gold/10">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12 sm:mb-16">
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.38em] text-gold uppercase block mb-2">
+            STUDIO GUIDANCE
+          </span>
+          <h2 class="font-decorative text-3xl sm:text-5xl text-ivory tracking-[0.08em] uppercase">
+            FREQUENTLY ASKED QUESTIONS
+          </h2>
+        </div>
+
+        <div id="faq-accordion" class="divide-y divide-gold/20 border-y border-gold/20">
+          <!-- FAQ 1 -->
+          <div class="faq-item is-open py-5">
+            <button type="button"
+              class="faq-trigger w-full flex items-center justify-between gap-4 text-left focus:outline-none"
+              aria-expanded="true">
+              <span class="font-cormorant text-lg sm:text-2xl text-ivory font-semibold">
+                How do I book an appointment?
+              </span>
+              <span class="faq-icon text-gold text-2xl font-light leading-none shrink-0">+</span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p class="pt-3 text-sm sm:text-base font-cormorant text-ivory/75 leading-relaxed">
+                  You can submit an appointment request using the booking form below, pick a design directly from the
+                  portfolio gallery, or reach out via WhatsApp / Email once your details are confirmed. [Studio Booking
+                  Policy Placeholder]
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item py-5">
+            <button type="button"
+              class="faq-trigger w-full flex items-center justify-between gap-4 text-left focus:outline-none"
+              aria-expanded="false">
+              <span class="font-cormorant text-lg sm:text-2xl text-ivory font-semibold">
+                How old should I be to get a tattoo?
+              </span>
+              <span class="faq-icon text-gold text-2xl font-light leading-none shrink-0">+</span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p class="pt-3 text-sm sm:text-base font-cormorant text-ivory/75 leading-relaxed">
+                  [Studio Age Policy Placeholder — Confirm minimum legal age requirement and valid government ID policy
+                  with the artist.]
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item py-5">
+            <button type="button"
+              class="faq-trigger w-full flex items-center justify-between gap-4 text-left focus:outline-none"
+              aria-expanded="false">
+              <span class="font-cormorant text-lg sm:text-2xl text-ivory font-semibold">
+                Does tattooing hurt?
+              </span>
+              <span class="faq-icon text-gold text-2xl font-light leading-none shrink-0">+</span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p class="pt-3 text-sm sm:text-base font-cormorant text-ivory/75 leading-relaxed">
+                  Discomfort varies depending on placement, session length, and individual tolerance. Resting well and
+                  hydrating beforehand helps make the session comfortable. [Artist Comfort &amp; Prep Note Placeholder]
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item py-5">
+            <button type="button"
+              class="faq-trigger w-full flex items-center justify-between gap-4 text-left focus:outline-none"
+              aria-expanded="false">
+              <span class="font-cormorant text-lg sm:text-2xl text-ivory font-semibold">
+                How do I take care of my tattoo?
+              </span>
+              <span class="faq-icon text-gold text-2xl font-light leading-none shrink-0">+</span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p class="pt-3 text-sm sm:text-base font-cormorant text-ivory/75 leading-relaxed">
+                  [Studio Aftercare Instructions Placeholder — Artist's specific wrapping, washing, moisturizing, and
+                  sun-protection guidelines will be provided here.]
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item py-5">
+            <button type="button"
+              class="faq-trigger w-full flex items-center justify-between gap-4 text-left focus:outline-none"
+              aria-expanded="false">
+              <span class="font-cormorant text-lg sm:text-2xl text-ivory font-semibold">
+                Can I bring my own tattoo sketches?
+              </span>
+              <span class="faq-icon text-gold text-2xl font-light leading-none shrink-0">+</span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p class="pt-3 text-sm sm:text-base font-cormorant text-ivory/75 leading-relaxed">
+                  [Custom Sketch Policy Placeholder — Confirm how personal sketches or reference ideas are adapted into
+                  tattoo-ready custom artwork.]
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item py-5">
+            <button type="button"
+              class="faq-trigger w-full flex items-center justify-between gap-4 text-left focus:outline-none"
+              aria-expanded="false">
+              <span class="font-cormorant text-lg sm:text-2xl text-ivory font-semibold">
+                How much does a tattoo cost?
+              </span>
+              <span class="faq-icon text-gold text-2xl font-light leading-none shrink-0">+</span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p class="pt-3 text-sm sm:text-base font-cormorant text-ivory/75 leading-relaxed">
+                  [Pricing &amp; Deposit Policy Placeholder — Pricing depends on size, detail, placement, and session
+                  time. Confirm studio minimum and deposit terms with the artist.]
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         13. FINAL SESSION — SECTION 03: BOOK AN APPOINTMENT
+         Inspired by Reference 2: Dark background with subtle tattoo-in-progress
+         photography, centered "BOOK AN APPOINTMENT" heading, and all 7 fields
+         plus consent checkbox and honest confirmation notice.
+         ====================================================================== -->
+    <section id="booking-section"
+      class="relative min-h-[100dvh] flex items-center py-14 sm:py-16 px-4 sm:px-8 overflow-hidden bg-obsidian border-t border-gold/10">
+      <!-- Subtle Background Tattoo Photography (35% opacity) -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <img src="works/allef-vinicius-hxNiXP498UI-unsplash.jpg" alt="" loading="lazy"
+          class="w-full h-full object-cover object-center opacity-35" />
+        <div class="absolute inset-0 bg-gradient-to-b from-obsidian/65 via-obsidian/25 to-obsidian/70"></div>
+      </div>
+
+      <div id="booking-form-wrap" class="relative z-10 w-full max-w-3xl mx-auto">
+        <div class="text-center mb-6 sm:mb-8">
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.38em] text-gold uppercase block mb-1.5">
+            RESERVE YOUR SESSION
+          </span>
+          <h2 class="font-decorative text-3xl sm:text-4xl lg:text-5xl text-ivory tracking-[0.08em] uppercase">
+            BOOK AN APPOINTMENT
+          </h2>
+        </div>
+
+        <!-- Compact 2-Column Appointment Request Form (Fits cleanly inside 100dvh) -->
+        <form id="appointment-booking-form"
+          class="space-y-3 sm:space-y-4 bg-charcoal/75 backdrop-blur-xl border border-gold/25 rounded-3xl p-4 sm:p-7 shadow-[0_25px_80px_rgba(0,0,0,0.9)]"
+          novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <!-- 1. Full Name -->
+            <div>
+              <label for="book-name" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1">
+                Full Name *
+              </label>
+              <input id="book-name" name="fullName" type="text" required placeholder="Your full name"
+                class="tenx-input !py-2.5" />
+            </div>
+
+            <!-- 2. Email Address -->
+            <div>
+              <label for="book-email" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1">
+                Email Address *
+              </label>
+              <input id="book-email" name="email" type="email" required placeholder="you@example.com"
+                class="tenx-input !py-2.5" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <!-- 3. Phone Number / WhatsApp -->
+            <div>
+              <label for="book-phone" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1">
+                Phone Number / WhatsApp *
+              </label>
+              <input id="book-phone" name="phone" type="tel" required placeholder="+1 234 567 8900"
+                class="tenx-input !py-2.5" />
+            </div>
+
+            <!-- 4. Select Procedure or Tattoo Style -->
+            <div>
+              <label for="book-style" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1">
+                Procedure or Tattoo Style *
+              </label>
+              <select id="book-style" name="style" required class="tenx-input !py-2.5">
+                <option value="">Select procedure or style...</option>
+                <option value="Black &amp; Grey Realism">Black &amp; Grey Realism</option>
+                <option value="Sacred Geometry &amp; Mandala">Sacred Geometry &amp; Mandala</option>
+                <option value="Fine-Line &amp; Script">Fine-Line &amp; Script</option>
+                <option value="Custom Sleeve / Full Backpiece">Custom Sleeve / Full Backpiece</option>
+                <option value="Cover-Up / Touch-Up">Cover-Up / Touch-Up</option>
+                <option value="Studio Consultation">Studio Consultation</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <!-- 5. Select Preferred Artist -->
+            <div>
+              <label for="book-artist" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1">
+                Preferred Artist *
+              </label>
+              <select id="book-artist" name="artist" required class="tenx-input !py-2.5">
+                <option value="">Select preferred artist...</option>
+                <option value="Etharokwara Maxwell">Etharokwara Maxwell (Lead Artist &amp; Founder)</option>
+                <option value="Any Available Studio Artist">Any Available Studio Artist</option>
+              </select>
+            </div>
+
+            <!-- 6. Select Preferred Date and Time -->
+            <div>
+              <label for="book-datetime"
+                class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1">
+                Preferred Date &amp; Time *
+              </label>
+              <input id="book-datetime" name="dateTime" type="datetime-local" required class="tenx-input !py-2.5" />
+            </div>
+          </div>
+
+          <!-- 7. Additional Comments -->
+          <div>
+            <label for="book-comments" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1">
+              Additional Comments
+            </label>
+            <textarea id="book-comments" name="comments" rows="2"
+              placeholder="Placement, approximate size, or design notes..."
+              class="tenx-input !py-2 resize-y"></textarea>
+          </div>
+
+          <!-- Attached Tattoo Design(s) Preview (Populated automatically when "Book a Session" is clicked on any gallery design) -->
+          <div id="booking-attached-preview"
+            class="hidden rounded-2xl bg-obsidian/75 border border-gold/35 p-3 flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <span class="font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold">
+                Attached Reference Design(s)
+              </span>
+              <button id="booking-clear-attached" type="button"
+                class="text-[10px] font-cinzel tracking-widest uppercase text-ivory/50 hover:text-gold underline">
+                Clear
+              </button>
+            </div>
+            <div id="booking-attached-list" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <!-- Consent Checkbox + Book Now Button -->
+          <div class="pt-1 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+            <label
+              class="flex items-start sm:items-center gap-2.5 cursor-pointer text-xs sm:text-sm font-cormorant text-ivory/80">
+              <input id="book-consent" type="checkbox" required class="tenx-checkbox mt-0.5 sm:mt-0" />
+              <span>I agree to the processing of personal data *</span>
+            </label>
+
+            <button type="submit"
+              class="btn-gold-rounded shrink-0 w-full sm:w-auto px-8 py-3 font-cinzel text-xs font-bold tracking-[0.18em] uppercase">
+              Book Now
+            </button>
+          </div>
+
+          <p id="book-error-msg" class="hidden text-xs font-cinzel tracking-wider text-red-400">
+            Please fill in all required fields and accept the data processing consent.
+          </p>
+        </form>
+
+        <!-- Honest Request Confirmation State (Hidden until validated submission) -->
+        <div id="book-confirmation"
+          class="hidden text-center bg-charcoal/85 backdrop-blur-xl border border-gold/40 rounded-3xl p-6 sm:p-9 space-y-4 shadow-2xl">
+          <p class="font-calligraphy text-3xl sm:text-4xl text-gold-light">Request Received</p>
+          <h3 class="font-decorative text-xl sm:text-2xl text-ivory">
+            Pending Studio Confirmation
+          </h3>
+          <p id="book-confirm-summary" class="font-cormorant text-base sm:text-lg text-ivory/85"></p>
+          <div
+            class="rounded-2xl bg-obsidian/80 border border-gold/30 p-4 text-xs font-cinzel tracking-wider text-gold/90">
+            Note: Your appointment is NOT automatically confirmed yet. No live booking backend is connected—studio
+            confirmation is required.
+          </div>
+          <button id="book-another-btn" type="button"
+            class="btn-outline-gold px-6 py-2.5 text-xs font-cinzel tracking-[0.18em] uppercase text-ivory hover:text-gold">
+            Submit Another Request
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         14. FINAL SESSION — SECTION 04: FOOTER
+         Complete Reference 2 footer: Brand, Navigation, Contact Info, Socials,
+         Location Map Preview, and Legal links.
+         ====================================================================== -->
+    <footer id="footer-section"
+      class="relative bg-[#07080a] border-t border-gold/20 pt-14 sm:pt-16 pb-10 px-4 sm:px-8 lg:px-14 overflow-hidden">
+      <!-- Atmospheric Tattooing Background Photography (45% opacity) -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <img src="works/allef-vinicius-hxNiXP498UI-unsplash.jpg" alt="" loading="lazy"
+          class="w-full h-full object-cover object-center opacity-45" />
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-obsidian/40 to-obsidian/60"></div>
+      </div>
+
+      <!-- Structured Reference-2 Footer Grid -->
+      <div class="relative z-10 max-w-[1380px] mx-auto pb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10">
+        <!-- Column 1: Brand & Socials -->
+        <div class="lg:col-span-3 space-y-3">
+          <a href="#hero-section"
+            class="font-decorative text-2xl tracking-[0.22em] text-gold hover:text-gold-light transition inline-block font-bold">
+            TEN<span class="text-[1.24em] text-ivory inline-block leading-none">X</span> INK
+          </a>
+          <p class="font-cormorant italic text-ivory/70 text-base">
+            Your skin, your story... [Tagline Placeholder]
+          </p>
+
+          <!-- Social Media Links -->
+          <div class="pt-3 flex items-center gap-3">
+            <a href="#footer-section" aria-label="Instagram Placeholder"
+              class="btn-outline-gold px-3 py-1.5 text-[10px] font-cinzel tracking-widest uppercase text-ivory/80 hover:text-gold">
+              IG
+            </a>
+            <a href="#footer-section" aria-label="TikTok Placeholder"
+              class="btn-outline-gold px-3 py-1.5 text-[10px] font-cinzel tracking-widest uppercase text-ivory/80 hover:text-gold">
+              TT
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+              class="btn-outline-gold px-3 py-1.5 text-[10px] font-cinzel tracking-widest uppercase text-ivory/80 hover:text-gold">
+              WA
+            </a>
+          </div>
+        </div>
+
+        <!-- Columns 2 & 3: Navigation & Contacts (Always side-by-side on Phone, Tablet & PC) -->
+        <div class="sm:col-span-2 lg:col-span-6 grid grid-cols-2 gap-6 sm:gap-8">
+          <!-- Column 2: Navigation -->
+          <div>
+            <h4 class="font-cinzel text-xs tracking-[0.24em] uppercase text-gold mb-4">Navigation</h4>
+            <ul class="space-y-2 font-cinzel text-[10px] sm:text-[11px] tracking-[0.16em] uppercase text-ivory/70">
+              <li><a href="#artist-section" class="hover:text-gold transition">About Us</a></li>
+              <li><a href="#pictorial-craft-stage" class="hover:text-gold transition">Services &amp; Pricing</a></li>
+              <li><a href="#artist-section" class="hover:text-gold transition">Artists</a></li>
+              <li><a href="#booking-section" class="hover:text-gold transition">Appointments</a></li>
+              <li><a href="#faq-section" class="hover:text-gold transition">Aftercare</a></li>
+              <li><a href="#portfolio-section" class="hover:text-gold transition">Gallery</a></li>
+              <li><a href="#mentorship-section" class="hover:text-gold transition">Tattoo Training</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Information -->
+          <div>
+            <h4 class="font-cinzel text-xs tracking-[0.24em] uppercase text-gold mb-4">Contacts</h4>
+            <ul class="space-y-2 font-cormorant text-sm sm:text-base text-ivory/75">
+              <li>[Studio Street Address Placeholder]</li>
+              <li>[Phone Number Placeholder]</li>
+              <li>[Email Address Placeholder]</li>
+              <li class="text-gold/80 text-xs sm:text-sm font-cinzel tracking-wider uppercase pt-1">
+                Hours: [Opening Hours Placeholder]
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Column 4: Dark Monochrome Location Map Preview (Matches Reference 2) -->
+        <div class="lg:col-span-3">
+          <h4 class="font-cinzel text-xs tracking-[0.24em] uppercase text-gold mb-4">Location</h4>
+          <div
+            class="relative rounded-xl overflow-hidden border border-gold/25 bg-[#0c0d11] h-36 flex items-center justify-center">
+            <!-- Stylized Dark Street Grid SVG -->
+            <svg class="absolute inset-0 w-full h-full opacity-35" viewBox="0 0 300 150" fill="none"
+              preserveAspectRatio="none">
+              <path d="M0 30 L300 45 M0 90 L300 72 M0 128 L300 115 M55 0 L78 150 M150 0 L138 150 M235 0 L252 150"
+                stroke="#646a75" stroke-width="1" />
+              <path d="M18 0 L120 150 M180 0 L285 150" stroke="#424750" stroke-width="0.7" />
+            </svg>
+            <!-- Gold Location Pin -->
+            <div class="relative z-10 flex flex-col items-center">
+              <span
+                class="w-4 h-4 rounded-full bg-gold shadow-[0_0_16px_rgba(201,155,82,0.9)] border-2 border-obsidian"></span>
+              <span
+                class="mt-2 px-2.5 py-0.5 rounded-full bg-obsidian/85 border border-gold/30 font-cinzel text-[9px] tracking-[0.18em] uppercase text-ivory/80">
+                [Map Pin — Address Pending]
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div
+        class="relative z-10 max-w-[1380px] mx-auto pt-6 border-t border-gold/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
+        <p class="font-cinzel text-[10px] tracking-[0.18em] uppercase text-ivory/45">
+          © 2026 TenX Ink Studio. All rights reserved.
+        </p>
+        <div class="flex items-center gap-6 font-cinzel text-[10px] tracking-[0.18em] uppercase text-ivory/50">
+          <a href="#footer-section" class="hover:text-gold transition">Terms Of Use</a>
+          <a href="#footer-section" class="hover:text-gold transition">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ========================================================================
+       9. FLOATING "ATTACHED TATTOO DESIGNS" BAR (FOR WHATSAPP & EMAIL)
+       Whenever a customer taps "+ Attach" on any tattoo in the portfolio,
+       this bar glides up at the bottom of their phone or PC screen so they
+       can send their chosen reference works straight to the owner!
+       ======================================================================== -->
+  <div id="attached-designs-dock"
+    class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-2xl rounded-3xl border border-gold/50 bg-charcoal/95 backdrop-blur-xl px-4 sm:px-6 py-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.95)] translate-y-36 opacity-0 pointer-events-none transition-all duration-500">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
+        <div id="attached-thumbs" class="flex items-center -space-x-2 overflow-hidden"></div>
+        <div>
+          <p class="font-cinzel text-xs sm:text-sm text-gold font-bold tracking-[0.14em] uppercase">
+            <span id="attached-count">0</span> Design(s) Attached
+          </p>
+          <p class="text-[11px] text-ivory/65">
+            Included with your WhatsApp / Email inquiry
+          </p>
+        </div>
+        <button id="clear-attached-btn" type="button"
+          class="text-[10px] font-cinzel tracking-widest uppercase text-ivory/50 hover:text-gold underline ml-2">
+          Clear
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2.5 w-full sm:w-auto">
+        <a id="whatsapp-attached-link" href="#" target="_blank" rel="noopener noreferrer"
+          class="btn-gold-rounded flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.14em] uppercase text-center">
+          WhatsApp Owner
+        </a>
+        <a id="email-attached-link" href="#"
+          class="btn-outline-gold flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 text-[11px] sm:text-xs font-cinzel tracking-[0.14em] uppercase text-ivory text-center">
+          Email Owner
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       10. "SEE ALL" BENTO GRID GALLERY (CONTAINS EVERYTHING IN ./works)
+       Automatically discovers EVERY photo and video the owner puts inside
+       the ./works/ folder and arranges them into a scalable Bento Grid.
+       ======================================================================== -->
+  <div id="curated-archive-modal" data-lenis-prevent
+    class="fixed inset-0 z-[65] bg-obsidian opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto overscroll-contain">
+    <!-- Sticky Top Bar inside the See All Bento Gallery -->
+    <div class="sticky top-0 z-30 bg-obsidian/95 border-b border-gold/15 px-4 sm:px-10 py-4">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+        <!-- Clicking the header title takes the user straight back to the normal page -->
+        <button id="vault-back-btn" type="button" class="group text-left focus:outline-none cursor-pointer"
+          title="Return to Main Page">
+          <span
+            class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-gold group-hover:text-gold-light transition-colors block">
+            ← TENX INK • COMPLETE COLLECTION
+          </span>
+          <h3
+            class="font-decorative text-lg sm:text-2xl text-ivory group-hover:text-gold-light transition-colors flex items-center gap-3">
+            <span>Tattoo Gallery</span>
+            <span id="vault-live-counter" class="font-cinzel text-xs sm:text-sm text-gold/85 tracking-widest">13
+              Works</span>
+          </h3>
+        </button>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button type="button" data-vault-filter="all"
+            class="vault-filter-btn btn-gold-rounded px-3 sm:px-4 py-1.5 text-[10px] font-cinzel font-bold tracking-[0.16em] uppercase">
+            All
+          </button>
+          <button type="button" data-vault-filter="image"
+            class="vault-filter-btn btn-outline-gold px-3 sm:px-4 py-1.5 text-[10px] font-cinzel tracking-[0.16em] uppercase text-ivory/80">
+            Photos
+          </button>
+          <button type="button" data-vault-filter="video"
+            class="vault-filter-btn btn-outline-gold px-3 sm:px-4 py-1.5 text-[10px] font-cinzel tracking-[0.16em] uppercase text-ivory/80">
+            Videos
+          </button>
+
+          <button id="close-archive-btn" type="button"
+            class="btn-outline-gold px-3.5 sm:px-4 py-1.5 text-[10px] sm:text-xs font-cinzel tracking-[0.2em] uppercase text-ivory hover:text-gold ml-1">
+            ✕ Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scalable Bento Grid Container (Populated automatically from /api/works) -->
+    <div id="bento-gallery-grid" class="bento-grid max-w-7xl mx-auto px-4 sm:px-8 pt-6 pb-32"></div>
+  </div>
+
+  <!-- ========================================================================
+       11. BOLD SCREEN SPOTLIGHT VIEW (SIDE-BY-SIDE & FITS SCREEN SIZE)
+       When you click or tap to enter any image, it highlights bold & sharp
+       side-by-side with its details while blurring the background so you still
+       see the other tattoo pieces behind it. Everything fits within 86dvh.
+       ======================================================================== -->
+  <div id="tattoo-lightbox"
+    class="fixed inset-0 z-[70] bg-obsidian/45 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-3 sm:p-6">
+    <div
+      class="relative w-full max-w-5xl max-h-[86dvh] grid grid-cols-1 sm:grid-cols-12 items-stretch rounded-2xl overflow-hidden bg-charcoal/80 backdrop-blur-xl border border-gold/40 shadow-[0_30px_100px_rgba(0,0,0,0.98)]">
+      <!-- Close button -->
+      <button id="close-lightbox-btn" type="button"
+        class="absolute top-3 right-3 z-30 w-9 h-9 rounded-full bg-obsidian/85 border border-gold/60 text-ivory hover:text-gold flex items-center justify-center text-sm shadow-xl"
+        aria-label="Close spotlight view">
+        ✕
+      </button>
+
+      <!-- Left: Highlighted Bold-Screen Media (Fits cleanly inside screen height) -->
+      <div
+        class="sm:col-span-7 bg-obsidian/70 flex items-center justify-center h-[46dvh] sm:h-[82dvh] max-h-[82dvh] overflow-hidden p-2 sm:p-4">
+        <img id="lightbox-img" src="" alt="Tattoo Masterwork Highlight"
+          class="max-h-full max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl" />
+        <video id="lightbox-video" src="" controls playsinline loop
+          class="hidden max-h-full max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl"></video>
+      </div>
+
+      <!-- Right: Side-by-Side Details & Attach Action -->
+      <div data-lenis-prevent
+        class="sm:col-span-5 p-4 sm:p-7 flex flex-col justify-between max-h-[38dvh] sm:max-h-[82dvh] overflow-y-auto overscroll-contain border-t sm:border-t-0 sm:border-l border-gold/20">
+        <div class="pr-6 sm:pr-0">
+          <span id="lightbox-num" class="font-calligraphy text-2xl sm:text-3xl text-gold-light block mb-1">Scene
+            I</span>
+          <span id="lightbox-style"
+            class="font-cinzel text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-gold block mb-2"></span>
+          <h3 id="lightbox-title" class="font-decorative text-xl sm:text-3xl text-ivory leading-snug mb-2 sm:mb-3"></h3>
+          <p id="lightbox-desc" class="text-ivory/80 text-sm sm:text-base leading-relaxed font-cormorant"></p>
+        </div>
+
+        <div class="pt-4 mt-4 border-t border-gold/15">
+          <button id="lightbox-attach-btn" type="button"
+            class="btn-gold-rounded w-full py-2.5 sm:py-3 px-5 font-cinzel text-[11px] sm:text-xs font-bold tracking-[0.15em] uppercase">
+            Book a Session
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       12. HIDDEN MENTORSHIP APPLICATION MODAL (OPENS ONLY ON ENROLL CLICK)
+       Remains completely hidden until the visitor clicks "Enroll in This Plan".
+       Automatically preselects the chosen training plan.
+       ======================================================================== -->
+  <div id="enrollment-modal" data-lenis-prevent
+    class="fixed inset-0 z-[75] bg-obsidian/80 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto overscroll-contain flex items-start sm:items-center justify-center p-3 sm:p-6">
+    <div
+      class="relative w-full max-w-2xl my-6 rounded-3xl bg-charcoal border border-gold/40 p-5 sm:p-9 shadow-[0_30px_100px_rgba(0,0,0,0.98)]">
+      <!-- Close Button -->
+      <button id="close-enroll-btn" type="button"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-obsidian/80 border border-gold/40 text-ivory hover:text-gold flex items-center justify-center text-sm"
+        aria-label="Close application form">
+        ✕
+      </button>
+
+      <!-- Header -->
+      <div class="mb-6 pr-8">
+        <span class="font-cinzel text-[10px] tracking-[0.32em] uppercase text-gold block mb-1">
+          DIRECT ARTIST MENTORSHIP APPLICATION
+        </span>
+        <h3 class="font-decorative text-2xl sm:text-3xl text-ivory">
+          Apply to Learn the Craft
+        </h3>
+        <p class="font-cormorant text-sm sm:text-base text-ivory/70 mt-1">
+          Share your background and passion directly with the artist.
+        </p>
+      </div>
+
+      <!-- Application Form -->
+      <form id="enrollment-form" class="space-y-4" novalidate>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- 1. Full Name -->
+          <div>
+            <label for="enroll-name" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1.5">
+              1. Full Name *
+            </label>
+            <input id="enroll-name" name="fullName" type="text" required placeholder="Your full name"
+              class="tenx-input" />
+          </div>
+
+          <!-- 2. Phone / WhatsApp Number -->
+          <div>
+            <label for="enroll-phone" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1.5">
+              2. Phone / WhatsApp Number *
+            </label>
+            <input id="enroll-phone" name="phone" type="tel" required placeholder="+1 234 567 8900"
+              class="tenx-input" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- 3. Email Address -->
+          <div>
+            <label for="enroll-email" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1.5">
+              3. Email Address *
+            </label>
+            <input id="enroll-email" name="email" type="email" required placeholder="you@example.com"
+              class="tenx-input" />
+          </div>
+
+          <!-- 4. Selected Training Plan -->
+          <div>
+            <label for="enroll-plan" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1.5">
+              4. Selected Training Plan *
+            </label>
+            <select id="enroll-plan" name="plan" required class="tenx-input">
+              <option value="">Select a training plan...</option>
+              <option value="[Course Name — Foundation]">[Course Name — Foundation]</option>
+              <option value="[Course Name — Studio Craft]">[Course Name — Studio Craft]</option>
+              <option value="[Course Name — Master Mentorship]">[Course Name — Master Mentorship]</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- 5. Previous Tattooing Experience -->
+          <div>
+            <label for="enroll-experience"
+              class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1.5">
+              5. Previous Tattooing Experience *
+            </label>
+            <select id="enroll-experience" name="experience" required class="tenx-input">
+              <option value="">Choose experience level...</option>
+              <option value="Complete Beginner (Sketching / Art only)">Complete Beginner (Sketching / Art only)</option>
+              <option value="Practiced on Synthetic Skin">Practiced on Synthetic Skin</option>
+              <option value="Under 1 Year Tattooing">Under 1 Year Tattooing</option>
+              <option value="1+ Years Tattooing">1+ Years Tattooing</option>
+            </select>
+          </div>
+
+          <!-- 6. Preferred Training Date -->
+          <div>
+            <label for="enroll-date" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1.5">
+              6. Preferred Training Date *
+            </label>
+            <input id="enroll-date" name="preferredDate" type="date" required class="tenx-input" />
+          </div>
+        </div>
+
+        <!-- 7. Why are you passionate about drawing tattoos? -->
+        <div>
+          <label for="enroll-passion" class="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold mb-1.5">
+            7. Why are you passionate about drawing tattoos? *
+          </label>
+          <textarea id="enroll-passion" name="passion" rows="4" required
+            placeholder="Tell the artist in your own words what draws you to tattooing and what you hope to create..."
+            class="tenx-input resize-y min-h-[115px]"></textarea>
+        </div>
+
+        <!-- Inline Validation Message -->
+        <p id="enroll-error-msg" class="hidden text-xs font-cinzel tracking-wider text-red-400">
+          Please complete all required fields before submitting your application.
+        </p>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
+          <button type="submit"
+            class="btn-gold-rounded w-full py-3.5 px-6 font-cinzel text-xs sm:text-sm font-bold tracking-[0.18em] uppercase">
+            Submit Application
+          </button>
+        </div>
+      </form>
+
+      <!-- Confirmation State (Hidden until validated submission) -->
+      <div id="enroll-confirmation" class="hidden text-center py-6 space-y-4">
+        <p class="font-calligraphy text-3xl sm:text-4xl text-gold-light">Thank You</p>
+        <h4 class="font-decorative text-xl sm:text-2xl text-ivory">
+          Application Preview Recorded
+        </h4>
+        <p id="enroll-confirm-summary" class="font-cormorant text-base text-ivory/80 max-w-lg mx-auto"></p>
+        <div
+          class="rounded-2xl bg-obsidian/80 border border-gold/30 p-4 text-xs font-cinzel tracking-wider text-gold/90">
+          Notice: No submission backend is connected yet. Backend integration is still required to deliver this
+          application automatically to the studio.
+        </div>
+        <button id="enroll-reset-btn" type="button"
+          class="btn-outline-gold px-6 py-2.5 text-xs font-cinzel tracking-[0.18em] uppercase text-ivory hover:text-gold">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       13. SMOOTH SCROLL (LENIS) + GSAP ANIMATION LIBRARIES & CUSTOM JS
+       Lenis makes mouse-wheel and touch scrolling feel buttery and weighted,
+       while GSAP and ScrollTrigger drive the cinematic scenes.
+       ======================================================================== -->
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

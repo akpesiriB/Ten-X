@@ -1,0 +1,504 @@
+/* ==========================================================================
+   TENX INK - CUSTOM STYLESHEET (styles.css)
+   Every block below has simple English comments explaining what it does.
+   ========================================================================== */
+
+/* 1. BASIC PAGE SETUP
+   This makes sure the whole website has a pitch-black background,
+   white text by default, and hides any accidental sideways scrollbars. */
+:root {
+  --bg-obsidian: #050507;
+  --bg-charcoal: #0c0c10;
+  --gold-light: #f0d290;
+  --gold-primary: #c99b52;
+  --gold-deep: #8f6524;
+  --text-ivory: #f5f2eb;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-obsidian);
+  color: var(--text-ivory);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* 2. CINEMATIC FILM GRAIN OVERLAY
+   Movie trailers have a subtle grain texture so the dark areas feel alive
+   and not flat. This sits on top of the screen without blocking clicks. */
+.film-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* 3. DARK VIGNETTE SHADOW AROUND THE SCREEN EDGES
+   This darkens the four corners of the phone or PC screen, drawing the
+   viewer's eyes straight to the tattoo portrait and headline in the center. */
+.hero-vignette {
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(5, 5, 7, 0.15) 0%,
+      rgba(5, 5, 7, 0.68) 62%,
+      rgba(5, 5, 7, 0.97) 95%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 5, 7, 0.85) 0%,
+      rgba(5, 5, 7, 0.1) 25%,
+      rgba(5, 5, 7, 0.45) 70%,
+      rgba(5, 5, 7, 0.99) 100%
+    );
+}
+
+/* 4. SELF-WRITING TATTOO CALLIGRAPHY EFFECT
+   This powers the "tattoo being written on its own" look.
+   We hide the SVG ink lines at first using stroke-dashoffset, and GSAP
+   gradually reveals them like an ink needle moving across skin. */
+.ink-stroke-path {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  transition: filter 0.4s ease;
+}
+
+/* Adds a warm golden glow to the calligraphy while it is being drawn */
+.ink-glow {
+  filter: drop-shadow(0 0 8px rgba(201, 155, 82, 0.45));
+}
+
+/* 5. THE "DIMENSION" CALLIGRAPHIC WORD STYLING
+   In Inspiration 1, the word "DIMENSION" has a dramatic medieval/Greek
+   swash look. This styles it with sharp serifs, subtle gold shimmer, and
+   custom letter spacing. */
+.dimension-word {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f2eb 60%, #d4af72 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.85));
+}
+
+/* 6. ROUNDED LUXURY GOLD BUTTON ("Book Appointment")
+   You asked for a more rounded button than Inspiration 1.
+   This gives it a pill shape, a brushed Greek-gold gradient, and a soft glow
+   when you tap it on a phone or hover on a PC. */
+.btn-gold-rounded {
+  background: linear-gradient(135deg, #dfba78 0%, #c49346 48%, #9d6f27 100%);
+  color: #090807;
+  border-radius: 9999px;
+  box-shadow:
+    0 10px 30px -5px rgba(201, 155, 82, 0.4),
+    inset 0 1px 1px rgba(255, 245, 220, 0.65);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+
+.btn-gold-rounded:hover,
+.btn-gold-rounded:active {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 14px 36px -4px rgba(223, 186, 120, 0.62),
+    inset 0 1px 2px rgba(255, 255, 255, 0.85);
+  filter: brightness(1.06);
+}
+
+/* 7. ROUNDED GOLD OUTLINE BUTTON
+   Used for secondary buttons like "Attach Design" and "Explore". */
+.btn-outline-gold {
+  border: 1px solid rgba(201, 155, 82, 0.55);
+  border-radius: 9999px;
+  background: rgba(10, 10, 14, 0.72);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover,
+.btn-outline-gold:active {
+  border-color: #e6c483;
+  background: rgba(201, 155, 82, 0.18);
+  box-shadow: 0 0 20px rgba(201, 155, 82, 0.28);
+}
+
+/* Style when a tattoo design is actively attached by the customer */
+.btn-outline-gold.is-attached {
+  background: linear-gradient(135deg, #dfba78 0%, #b88638 100%);
+  color: #050507;
+  border-color: #f0d290;
+  font-weight: 700;
+  box-shadow: 0 0 24px rgba(201, 155, 82, 0.55);
+}
+
+/* 8. TATTOO INK MASK REVEAL FOR HEADLINE LETTERS
+   Each word in the main headline rises up smoothly as if emerging from dark ink. */
+.char-reveal {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+/* 9. SIDE GOLD VORTEX ORNAMENTS (Left & Right Swirls from Inspo 1)
+   Makes sure the golden spiral ornaments sit nicely on both small phone
+   screens and wide PC monitors without blocking the text. */
+.spiral-ornament {
+  pointer-events: none;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 14px rgba(201, 155, 82, 0.2));
+}
+
+/* 10. RAW INK-BLEED EDGE AT THE BOTTOM (From Inspo 2)
+   Creates the rough brushed-ink border where the Hero section meets
+   Section 2 so the transition feels like wet tattoo ink on canvas. */
+.ink-edge-divider {
+  pointer-events: none;
+  filter: drop-shadow(0 -12px 24px rgba(0, 0, 0, 0.95));
+}
+
+/* 11. STAGE FOR CONTINUOUS SCROLL STORY */
+#cinema-stage {
+  position: relative;
+}
+
+/* ==========================================================================
+   12. SESSION 02 — PINNED CINEMATIC VISUAL STORY STAGE (CASA MOMO INSPIRED)
+   These styles power the 5-scene continuous scroll movie where photographs
+   expand, overlap, emerge from behind one another, and preserve their natural
+   proportions with luxurious dark breathing room.
+   ========================================================================== */
+
+/* Each floating artwork vessel on the pinned stage */
+.cinema-art-item {
+  position: absolute;
+  will-change: transform, opacity, clip-path, filter;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Soft obsidian & antique-gold shadow around each photograph */
+.cinema-photo-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #07070a;
+  box-shadow:
+    0 30px 80px -15px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(201, 155, 82, 0.22);
+  transition: box-shadow 0.45s ease;
+}
+
+.cinema-art-item:hover,
+.cinema-art-item.is-on-top {
+  z-index: 45 !important;
+}
+
+.cinema-art-item:hover .cinema-photo-frame,
+.cinema-art-item.is-on-top .cinema-photo-frame {
+  box-shadow:
+    0 35px 90px -10px rgba(0, 0, 0, 0.98),
+    0 0 0 1.5px rgba(240, 210, 144, 0.85),
+    0 0 40px rgba(201, 155, 82, 0.3);
+  transform: scale(1.03);
+}
+
+/* Subtle bottom vignette on the Masterpiece image so the lower edge melts into pitch black */
+.masterpiece-vignette {
+  background:
+    radial-gradient(circle at 50% 42%, transparent 45%, rgba(5, 5, 7, 0.88) 92%),
+    linear-gradient(180deg, rgba(5, 5, 7, 0.3) 0%, transparent 22%, transparent 65%, #050507 96%);
+}
+
+/* Hover badge on each artwork allowing instant Close-Up / WhatsApp-Email Attachment */
+.art-hover-pill {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cinema-art-item:hover .art-hover-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* On touch phones, keep a tiny subtle gold "+" badge visible so users know they can tap any tattoo */
+@media (hover: none) {
+  .art-hover-pill {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+/* Engraved scene typography that writes itself onto the screen */
+.scene-caption-block {
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+}
+
+.scene-engraved-line {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+}
+
+/* Subtle progress bar along the side of the pinned portfolio stage */
+.story-progress-rail {
+  background: rgba(201, 155, 82, 0.14);
+}
+
+.story-progress-fill {
+  background: linear-gradient(180deg, #f0d290 0%, #c99b52 100%);
+  box-shadow: 0 0 12px rgba(201, 155, 82, 0.6);
+  transform-origin: top center;
+}
+
+/* ==========================================================================
+   13. SCALABLE BENTO GRID ("SEE ALL" GALLERY)
+   Automatically arranges every photo and video in ./works/ into an
+   editorial Bento Grid with varied featured, tall, wide, and square tiles.
+   ========================================================================== */
+#curated-archive-modal {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 175px;
+  grid-auto-flow: dense;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 220px;
+    gap: 1rem;
+  }
+}
+
+.bento-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #0a0a0e;
+  border: 1px solid rgba(201, 155, 82, 0.2);
+  cursor: pointer;
+  content-visibility: auto;
+  contain-intrinsic-size: 220px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
+}
+
+.bento-tile:hover {
+  transform: translateY(-3px);
+  border-color: rgba(240, 210, 144, 0.65);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.95), 0 0 24px rgba(201, 155, 82, 0.18);
+}
+
+/* Bento tile size variants */
+.bento-featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.bento-tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+.bento-wide {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+.bento-standard {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* ==========================================================================
+   14. SESSION 03 — MEET THE ARTIST & BECOME A TATTOO ARTIST
+   Dark luxury obsidian & gold styling, torn-ink frames (from Inspo 2),
+   and pictorial selector inspired by your "Our Services" reference.
+   ========================================================================== */
+
+/* Torn-edge portrait frame for the Artist & Pictorial Showcase */
+.artist-torn-frame {
+  position: relative;
+  overflow: hidden;
+  background: #08080c;
+  clip-path: polygon(
+    0% 1.8%, 5% 0%, 14% 1.4%, 25% 0%, 38% 1.2%, 52% 0%, 66% 1.3%, 79% 0%, 91% 1.4%, 100% 0.5%,
+    99.3% 18%, 100% 35%, 99% 52%, 100% 70%, 99.2% 86%, 100% 98%,
+    94% 100%, 81% 98.7%, 67% 100%, 52% 98.8%, 37% 100%, 22% 98.5%, 9% 100%, 0% 98.2%,
+    0.9% 82%, 0% 64%, 1.1% 46%, 0% 28%, 0.8% 12%
+  );
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+}
+
+/* Pictorial thumbnail selector buttons (inspired by "Our Services" attachment) */
+.pictorial-thumb-btn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(201, 155, 82, 0.25);
+  background: #0a0a0e;
+  opacity: 0.55;
+  transform: scale(0.96);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.pictorial-thumb-btn:hover {
+  opacity: 0.88;
+  border-color: rgba(201, 155, 82, 0.65);
+}
+
+.pictorial-thumb-btn.is-active {
+  opacity: 1;
+  transform: scale(1.03);
+  border-color: #f0d290;
+  box-shadow: 0 0 24px rgba(201, 155, 82, 0.32);
+}
+
+/* Course Plan luxury cards */
+.course-plan-card {
+  position: relative;
+  background: linear-gradient(165deg, rgba(16, 16, 22, 0.92) 0%, rgba(8, 8, 12, 0.98) 100%);
+  border: 1px solid rgba(201, 155, 82, 0.22);
+  border-radius: 18px;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.course-plan-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(240, 210, 144, 0.6);
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(201, 155, 82, 0.14);
+}
+
+.course-plan-card.is-featured-plan {
+  border-color: rgba(201, 155, 82, 0.55);
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(201, 155, 82, 0.12);
+}
+
+/* Dark luxury form inputs for the hidden enrollment application modal */
+.tenx-input {
+  width: 100%;
+  background: rgba(5, 5, 7, 0.85);
+  border: 1px solid rgba(201, 155, 82, 0.28);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  color: #f5f2eb;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tenx-input:focus {
+  outline: none;
+  border-color: #f0d290;
+  box-shadow: 0 0 0 3px rgba(201, 155, 82, 0.16);
+}
+
+.tenx-input::placeholder {
+  color: rgba(245, 242, 235, 0.35);
+}
+
+/* ==========================================================================
+   15. FINAL SESSION — TESTIMONIALS, FAQ ACCORDION & BOOKING
+   ========================================================================== */
+
+/* Warm Antique-Gold & Obsidian textured backdrop for Testimonials (Inspo 1) */
+.testimonial-gold-wash {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(201, 155, 82, 0.24) 0%, rgba(24, 18, 10, 0.94) 65%, rgba(5, 5, 7, 0.99) 100%);
+}
+
+/* Smooth FAQ Accordion Body Transition */
+.faq-answer-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faq-item.is-open .faq-answer-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-answer-inner {
+  overflow: hidden;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.faq-item.is-open .faq-icon {
+  transform: rotate(45deg);
+  color: #f0d290;
+}
+
+/* Custom dark gold-trimmed checkbox for personal data consent */
+.tenx-checkbox {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1px solid rgba(201, 155, 82, 0.55);
+  background: rgba(5, 5, 7, 0.85);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.tenx-checkbox:checked {
+  background: linear-gradient(135deg, #dfba78 0%, #c49346 100%);
+  border-color: #f0d290;
+}
+
+.tenx-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: #050507;
+}
+
+/* Respect user reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 15. CUSTOM SCROLLBAR FOR DESKTOP */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050507;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a2d1b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c99b52;
+}
