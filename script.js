@@ -1437,6 +1437,13 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     mentorTl.fromTo(
+      '#mentor-cta-wrap',
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+      0.95
+    );
+
+    mentorTl.fromTo(
       '#mentor-float-left',
       { opacity: 0, y: 40 },
       { opacity: 0.85, y: -15, duration: 1.1, ease: 'power2.out' },
@@ -1449,24 +1456,13 @@ document.addEventListener('DOMContentLoaded', () => {
       { opacity: 0.85, y: 15, duration: 1.1, ease: 'power2.out' },
       0.55
     );
-
-    // Reveal the self-drawing flourish in Pictorial Craft Stage
-    gsap.to('#pictorial-craft-stage .ink-stroke-path', {
-      strokeDashoffset: 0,
-      duration: 1.4,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '#pictorial-craft-stage',
-        start: 'top 80%',
-      },
-    });
   } else {
     // Immediate visibility for reduced-motion preference
     gsap.set(
-      '#artist-signature, #artist-identity-block, #artist-bio-block, #artist-philosophy-block, #mentor-eyebrow, #mentor-main-headline, #mentor-subcopy, #mentor-float-left, #mentor-float-right',
+      '#artist-signature, #artist-identity-block, #artist-bio-block, #artist-philosophy-block, #mentor-eyebrow, #mentor-main-headline, #mentor-subcopy, #mentor-cta-wrap, #mentor-float-left, #mentor-float-right',
       { opacity: 1, y: 0 }
     );
-    gsap.set('#artist-heading-line, #mentor-headline-line, #pictorial-craft-stage .ink-stroke-path', {
+    gsap.set('#artist-heading-line, #mentor-headline-line', {
       strokeDashoffset: 0,
     });
   }
@@ -1551,6 +1547,35 @@ document.addEventListener('DOMContentLoaded', () => {
   renderPictorialCraft(0);
 
   /* ------------------------------------------------------------------------
+     12B. MENTORSHIP DETAILS MODAL ("LEARN MORE" -> PROCESS + PLANS)
+     ------------------------------------------------------------------------ */
+  const mentorshipDetailsModal = document.getElementById('mentorship-details-modal');
+  const mentorLearnMoreBtn = document.getElementById('mentor-learn-more-btn');
+  const closeMentorshipModalBtn = document.getElementById('close-mentorship-modal-btn');
+  const mentorshipBackBtn = document.getElementById('mentorship-back-btn');
+
+  function openMentorshipDetailsModal() {
+    if (lenis) lenis.stop();
+    if (mentorshipDetailsModal) {
+      mentorshipDetailsModal.scrollTop = 0;
+      mentorshipDetailsModal.classList.remove('opacity-0', 'pointer-events-none');
+      mentorshipDetailsModal.classList.add('opacity-100', 'pointer-events-auto');
+    }
+  }
+
+  function closeMentorshipDetailsModal() {
+    if (mentorshipDetailsModal) {
+      mentorshipDetailsModal.classList.add('opacity-0', 'pointer-events-none');
+      mentorshipDetailsModal.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+    if (lenis) lenis.start();
+  }
+
+  if (mentorLearnMoreBtn) mentorLearnMoreBtn.addEventListener('click', openMentorshipDetailsModal);
+  if (closeMentorshipModalBtn) closeMentorshipModalBtn.addEventListener('click', closeMentorshipDetailsModal);
+  if (mentorshipBackBtn) mentorshipBackBtn.addEventListener('click', closeMentorshipDetailsModal);
+
+  /* ------------------------------------------------------------------------
      13. HIDDEN ENROLLMENT APPLICATION MODAL (OPENS ONLY ON ENROLL CLICK)
      ------------------------------------------------------------------------ */
   const enrollmentModal = document.getElementById('enrollment-modal');
@@ -1580,7 +1605,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeEnrollmentModal() {
     enrollmentModal.classList.add('opacity-0', 'pointer-events-none');
     enrollmentModal.classList.remove('opacity-100', 'pointer-events-auto');
-    if (lenis) lenis.start();
+    const isMentorshipOpen =
+      mentorshipDetailsModal && mentorshipDetailsModal.classList.contains('opacity-100');
+    if (lenis && !isMentorshipOpen) lenis.start();
   }
 
   document.querySelectorAll('.enroll-trigger-btn').forEach((btn) => {
@@ -1696,73 +1723,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTestimonial(0);
 
   if (!prefersReducedMotion) {
-    // Pictorial Craft Stage ("THE CRAFT YOU WILL MASTER / Inside The Training Process")
-    gsap.fromTo(
-      '#pictorial-craft-stage > div:first-child',
-      { opacity: 0, y: 28 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '#pictorial-craft-stage', start: 'top 80%' },
-      }
-    );
-
-    gsap.fromTo(
-      '.pictorial-thumb-btn',
-      { opacity: 0, y: 22 },
-      {
-        opacity: (i) => (i === 0 ? 1 : 0.55),
-        y: 0,
-        duration: 0.7,
-        stagger: 0.1,
-        ease: 'power2.out',
-        clearProps: 'opacity',
-        scrollTrigger: { trigger: '#pictorial-thumbs-row', start: 'top 84%' },
-      }
-    );
-
-    gsap.fromTo(
-      '#pictorial-craft-stage .artist-torn-frame',
-      { opacity: 0, scale: 0.94, y: 28 },
-      {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 0.95,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '#pictorial-craft-stage .artist-torn-frame', start: 'top 84%' },
-      }
-    );
-
-    // Course Plans Comparison Stage
-    gsap.fromTo(
-      '#training-plans-stage > div:first-child',
-      { opacity: 0, y: 28 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '#training-plans-stage', start: 'top 80%' },
-      }
-    );
-
-    gsap.fromTo(
-      '.course-plan-card',
-      { opacity: 0, y: 36, scale: 0.97 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.85,
-        stagger: 0.14,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '#training-plans-cards', start: 'top 82%' },
-      }
-    );
-
     // Client Testimonials Content + Parallax
     gsap.to('#testimonial-bg-img', {
       yPercent: -12,

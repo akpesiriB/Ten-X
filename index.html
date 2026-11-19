@@ -768,11 +768,8 @@
 
           <!-- RIGHT: PROGRESSIVE SCROLL-REVEALED ARTIST STORY -->
           <div class="md:col-span-7 flex flex-col justify-center text-left space-y-2 sm:space-y-4 relative z-20">
-            <!-- Step 1: Section Eyebrow & Heading -->
+            <!-- Step 1: Heading -->
             <div id="artist-intro-block">
-              <span class="font-cinzel text-[9px] sm:text-xs tracking-[0.34em] text-gold uppercase block mb-1">
-                SESSION III • THE PERSON BEHIND THE INK
-              </span>
               <h2 class="font-decorative text-2xl sm:text-5xl lg:text-6xl text-ivory tracking-[0.08em] uppercase">
                 MEET THE <span class="text-gold">ARTIST</span>
               </h2>
@@ -782,47 +779,26 @@
               </svg>
             </div>
 
-            <!-- Step 2: Artist Name, Role & Experience -->
+            <!-- Step 2: Artist Name -->
             <div id="artist-identity-block" class="opacity-0 translate-y-4">
               <h3 class="font-cinzel text-base sm:text-2xl tracking-[0.16em] text-gold-light uppercase font-bold">
                 ETHAROKWARA MAXWELL
               </h3>
-              <p class="font-cinzel text-[10px] sm:text-xs tracking-[0.2em] text-ivory/65 uppercase mt-0.5">
-                Founder &amp; Lead Tattoo Artist • TenX Ink Studio
+            </div>
+
+            <!-- Step 3: Core Artistic Statement -->
+            <div id="artist-bio-block" class="opacity-0 translate-y-4 max-w-xl">
+              <p class="font-cormorant text-lg sm:text-2xl text-ivory/90 leading-relaxed">
+                Tattooing is art, and art is an expression of a person's spirit.
               </p>
             </div>
 
-            <!-- Step 3: Background & Achievements -->
-            <div id="artist-bio-block" class="opacity-0 translate-y-4 space-y-1.5 sm:space-y-2.5 max-w-xl">
-              <p class="font-cormorant text-sm sm:text-xl text-ivory/85 leading-snug sm:leading-relaxed">
-                [Professional Background Placeholder — Share the artist's journey from early sketching to mastering
-                needle precision, studio standards, and bespoke custom composition.]
-              </p>
-              <p class="font-cormorant text-xs sm:text-base text-gold/85 italic">
-                Achievements: [Awards, Conventions, or Notable Milestones Placeholder]
-              </p>
-            </div>
-
-            <!-- Step 4: Philosophy & Specialties -->
+            <!-- Step 4: Philosophy -->
             <div id="artist-philosophy-block"
               class="opacity-0 translate-y-4 pt-2 sm:pt-3 border-t border-gold/20 max-w-xl">
-              <p class="font-calligraphy text-xl sm:text-3xl text-gold-light mb-1.5 sm:mb-2">
-                “Every line is permanence; every shadow is emotion.”
+              <p class="font-calligraphy text-2xl sm:text-4xl text-gold-light">
+                “Every line is permanent; every shadow is emotion.”
               </p>
-              <div class="flex flex-wrap gap-1.5 sm:gap-2">
-                <span
-                  class="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-gold/30 bg-charcoal/80 font-cinzel text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ivory/80">
-                  Black &amp; Grey Realism
-                </span>
-                <span
-                  class="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-gold/30 bg-charcoal/80 font-cinzel text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ivory/80">
-                  Sacred Geometry
-                </span>
-                <span
-                  class="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-gold/30 bg-charcoal/80 font-cinzel text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-ivory/80">
-                  Fine-Line &amp; Custom Sleeves
-                </span>
-              </div>
             </div>
           </div>
 
@@ -889,226 +865,17 @@
             Learn the discipline directly inside a working dark-luxury studio. Master machine control, skin anatomy,
             chiaroscuro shading, and turn raw passion into permanent art.
           </p>
-        </div>
-      </div>
 
-      <!-- 10B. PICTORIAL CRAFT SHOWCASE (INSPIRED BY YOUR "OUR SERVICES" ATTACHMENT) -->
-      <div id="pictorial-craft-stage" class="relative py-20 sm:py-28 px-4 sm:px-8 max-w-[1280px] mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.35em] text-gold uppercase block mb-2">
-            THE CRAFT YOU WILL MASTER
-          </span>
-          <h3 class="font-decorative text-2xl sm:text-4xl text-ivory tracking-wider uppercase">
-            Inside The Training Process
-          </h3>
-          <svg class="w-44 h-4 mx-auto mt-2 overflow-visible" viewBox="0 0 180 14" fill="none">
-            <path class="ink-stroke-path" d="M6 8 C55 1, 125 13, 174 6" stroke="#c99b52" stroke-width="1.4"
-              stroke-linecap="round" />
-          </svg>
-        </div>
-
-        <!-- Pictorial Thumbnails Strip (4 clickable stages) -->
-        <div id="pictorial-thumbs-row"
-          class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-4xl mx-auto mb-8 sm:mb-10">
-          <!-- Populated cleanly by script.js -->
-        </div>
-
-        <!-- Large Active Pictorial Feature with Prev / Next Arrows -->
-        <div class="relative max-w-4xl mx-auto flex items-center gap-3 sm:gap-6">
-          <button id="pictorial-prev-btn" type="button"
-            class="btn-outline-gold shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-ivory hover:text-gold text-sm sm:text-base"
-            aria-label="Previous training stage">
-            ←
-          </button>
-
-          <div class="flex-1">
-            <div class="artist-torn-frame aspect-[16/10] sm:aspect-[16/9] relative">
-              <img id="pictorial-active-img" src="works/collins-lesulie-PWK6CeCJtJw-unsplash.jpg"
-                alt="Training Process Highlight" class="w-full h-full object-cover transition-opacity duration-500" />
-              <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-7">
-                <span id="pictorial-active-tag"
-                  class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold block mb-1">
-                  STAGE 01
-                </span>
-                <h4 id="pictorial-active-title" class="font-decorative text-lg sm:text-2xl text-ivory mb-1">
-                  Machine &amp; Needle Control
-                </h4>
-                <p id="pictorial-active-desc" class="font-cormorant text-sm sm:text-base text-ivory/80 max-w-xl">
-                  Understand rotary &amp; coil mechanics, needle depth, voltage calibration, and steady hand posture.
-                </p>
-              </div>
-            </div>
+          <!-- Learn More CTA Button (Opens Inside The Training Process -> Course Plans) -->
+          <div id="mentor-cta-wrap" class="mt-7 sm:mt-9 opacity-0">
+            <button
+              id="mentor-learn-more-btn"
+              type="button"
+              class="btn-gold-rounded px-8 sm:px-10 py-3.5 font-cinzel text-xs sm:text-sm font-bold tracking-[0.18em] uppercase"
+            >
+              Learn More
+            </button>
           </div>
-
-          <button id="pictorial-next-btn" type="button"
-            class="btn-outline-gold shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-ivory hover:text-gold text-sm sm:text-base"
-            aria-label="Next training stage">
-            →
-          </button>
-        </div>
-      </div>
-
-      <!-- 10C. COURSE PLANS COMPARISON (PLACEHOLDERS WHERE DETAILS NOT SUPPLIED) -->
-      <div id="training-plans-stage"
-        class="relative py-16 sm:py-24 px-4 sm:px-8 max-w-[1320px] mx-auto border-t border-gold/10">
-        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.35em] text-gold uppercase block mb-2">
-            TRAINING PATHWAYS
-          </span>
-          <h3 class="font-decorative text-2xl sm:text-4xl lg:text-5xl text-ivory tracking-wider uppercase">
-            Choose Your Mentorship Plan
-          </h3>
-          <p class="font-cormorant text-base sm:text-lg text-ivory/70 mt-2">
-            Compare the available training tracks below. Click any enrollment button to open your personal application.
-          </p>
-        </div>
-
-        <!-- 3 Comparable Plans (Horizontal swipe row on phone, 3-column grid on desktop) -->
-        <div
-          id="training-plans-cards"
-          data-lenis-prevent
-          class="flex lg:grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 items-stretch"
-        >
-
-          <!-- PLAN 1 -->
-          <article class="course-plan-card shrink-0 w-[82vw] sm:w-[58vw] lg:w-auto snap-center p-5 sm:p-8 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold">
-                  Beginner Level
-                </span>
-                <span
-                  class="px-3 py-1 rounded-full border border-gold/25 text-[10px] font-cinzel tracking-widest uppercase text-ivory/75">
-                  [Duration Placeholder]
-                </span>
-              </div>
-
-              <h4 class="font-decorative text-2xl text-ivory mb-2">
-                [Course Name — Foundation]
-              </h4>
-              <div
-                class="font-cormorant text-3xl sm:text-4xl text-gold-light font-bold mb-5 pb-4 border-b border-gold/15">
-                [Price Placeholder]
-              </div>
-
-              <p class="font-cinzel text-[10px] tracking-[0.22em] uppercase text-gold/85 mb-2.5">
-                What You Will Learn
-              </p>
-              <ul class="space-y-2 text-sm sm:text-base font-cormorant text-ivory/80 mb-5">
-                <li>• [Curriculum Topic 1 Placeholder]</li>
-                <li>• [Curriculum Topic 2 Placeholder]</li>
-                <li>• [Hygiene, Stencil &amp; Machine Setup Placeholder]</li>
-              </ul>
-
-              <div class="rounded-xl bg-obsidian/70 border border-gold/15 p-3.5 mb-6">
-                <span class="font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold block mb-1">
-                  Practical Training Included
-                </span>
-                <p class="text-xs sm:text-sm font-cormorant text-ivory/75">
-                  [Practical Hours / Synthetic Skin Practice Placeholder]
-                </p>
-              </div>
-            </div>
-
-            <button type="button" data-enroll-plan="[Course Name — Foundation]"
-              class="enroll-trigger-btn btn-outline-gold w-full py-3 px-6 font-cinzel text-xs font-bold tracking-[0.18em] uppercase text-ivory hover:text-gold-light">
-              Enroll in This Plan
-            </button>
-          </article>
-
-          <!-- PLAN 2 (FEATURED) -->
-          <article class="course-plan-card is-featured-plan shrink-0 w-[82vw] sm:w-[58vw] lg:w-auto snap-center p-5 sm:p-8 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold-light font-bold">
-                  Intermediate Level
-                </span>
-                <span
-                  class="px-3 py-1 rounded-full border border-gold/45 bg-gold/10 text-[10px] font-cinzel tracking-widest uppercase text-gold-light">
-                  [Duration Placeholder]
-                </span>
-              </div>
-
-              <h4 class="font-decorative text-2xl text-ivory mb-2">
-                [Course Name — Studio Craft]
-              </h4>
-              <div
-                class="font-cormorant text-3xl sm:text-4xl text-gold-light font-bold mb-5 pb-4 border-b border-gold/20">
-                [Price Placeholder]
-              </div>
-
-              <p class="font-cinzel text-[10px] tracking-[0.22em] uppercase text-gold/85 mb-2.5">
-                What You Will Learn
-              </p>
-              <ul class="space-y-2 text-sm sm:text-base font-cormorant text-ivory/85 mb-5">
-                <li>• [Shading, Contrast &amp; Line Weight Placeholder]</li>
-                <li>• [Portrait &amp; Custom Design Flow Placeholder]</li>
-                <li>• [Client Consultation &amp; Studio Workflow Placeholder]</li>
-              </ul>
-
-              <div class="rounded-xl bg-obsidian/70 border border-gold/25 p-3.5 mb-6">
-                <span class="font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold block mb-1">
-                  Practical Training Included
-                </span>
-                <p class="text-xs sm:text-sm font-cormorant text-ivory/80">
-                  [Guided Practical Sessions &amp; Live Shadowing Placeholder]
-                </p>
-              </div>
-            </div>
-
-            <button type="button" data-enroll-plan="[Course Name — Studio Craft]"
-              class="enroll-trigger-btn btn-gold-rounded w-full py-3.5 px-6 font-cinzel text-xs font-bold tracking-[0.18em] uppercase">
-              Enroll in This Plan
-            </button>
-          </article>
-
-          <!-- PLAN 3 -->
-          <article class="course-plan-card shrink-0 w-[82vw] sm:w-[58vw] lg:w-auto snap-center p-5 sm:p-8 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold">
-                  Advanced / 1-on-1 Level
-                </span>
-                <span
-                  class="px-3 py-1 rounded-full border border-gold/25 text-[10px] font-cinzel tracking-widest uppercase text-ivory/75">
-                  [Duration Placeholder]
-                </span>
-              </div>
-
-              <h4 class="font-decorative text-2xl text-ivory mb-2">
-                [Course Name — Master Mentorship]
-              </h4>
-              <div
-                class="font-cormorant text-3xl sm:text-4xl text-gold-light font-bold mb-5 pb-4 border-b border-gold/15">
-                [Price Placeholder]
-              </div>
-
-              <p class="font-cinzel text-[10px] tracking-[0.22em] uppercase text-gold/85 mb-2.5">
-                What You Will Learn
-              </p>
-              <ul class="space-y-2 text-sm sm:text-base font-cormorant text-ivory/80 mb-5">
-                <li>• [Realism, Sacred Geometry &amp; Large Pieces Placeholder]</li>
-                <li>• [Personal Artistic Style &amp; Portfolio Building Placeholder]</li>
-                <li>• [1-on-1 Critique with Lead Artist Placeholder]</li>
-              </ul>
-
-              <div class="rounded-xl bg-obsidian/70 border border-gold/15 p-3.5 mb-6">
-                <span class="font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold block mb-1">
-                  Practical Training Included
-                </span>
-                <p class="text-xs sm:text-sm font-cormorant text-ivory/75">
-                  [Supervised Live Studio Practice Placeholder]
-                </p>
-              </div>
-            </div>
-
-            <button type="button" data-enroll-plan="[Course Name — Master Mentorship]"
-              class="enroll-trigger-btn btn-outline-gold w-full py-3 px-6 font-cinzel text-xs font-bold tracking-[0.18em] uppercase text-ivory hover:text-gold-light">
-              Enroll in This Plan
-            </button>
-          </article>
-
         </div>
       </div>
     </section>
@@ -1566,7 +1333,7 @@
             <h4 class="font-cinzel text-xs tracking-[0.24em] uppercase text-gold mb-4">Navigation</h4>
             <ul class="space-y-2 font-cinzel text-[10px] sm:text-[11px] tracking-[0.16em] uppercase text-ivory/70">
               <li><a href="#artist-section" class="hover:text-gold transition">About Us</a></li>
-              <li><a href="#pictorial-craft-stage" class="hover:text-gold transition">Services &amp; Pricing</a></li>
+              <li><a href="#mentorship-section" class="hover:text-gold transition">Services &amp; Pricing</a></li>
               <li><a href="#artist-section" class="hover:text-gold transition">Artists</a></li>
               <li><a href="#booking-section" class="hover:text-gold transition">Appointments</a></li>
               <li><a href="#faq-section" class="hover:text-gold transition">Aftercare</a></li>
@@ -1761,6 +1528,180 @@
             Book a Session
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       11B. MENTORSHIP DETAILS OVERLAY ("LEARN MORE" -> TRAINING PROCESS + PLANS)
+       Opens when the visitor clicks "Learn More" in the "Want to Become a
+       Tattoo Artist?" section. Leads smoothly from Inside The Training Process
+       down to the concise Course Plans.
+       ======================================================================== -->
+  <div id="mentorship-details-modal" data-lenis-prevent
+    class="fixed inset-0 z-[68] bg-obsidian opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto overscroll-contain">
+    <!-- Sticky Top Bar -->
+    <div class="sticky top-0 z-30 bg-obsidian/95 border-b border-gold/15 px-4 sm:px-10 py-4">
+      <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+        <button id="mentorship-back-btn" type="button" class="group text-left focus:outline-none cursor-pointer">
+          <span class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-gold group-hover:text-gold-light transition-colors block">
+            ← BACK TO MAIN PAGE
+          </span>
+          <h3 class="font-decorative text-lg sm:text-2xl text-ivory group-hover:text-gold-light transition-colors">
+            Tattoo Mentorship &amp; Plans
+          </h3>
+        </button>
+
+        <button id="close-mentorship-modal-btn" type="button"
+          class="btn-outline-gold px-4 py-1.5 text-[10px] sm:text-xs font-cinzel tracking-[0.2em] uppercase text-ivory hover:text-gold">
+          ✕ Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 1 inside Overlay: Inside The Training Process -->
+    <div id="pictorial-craft-stage" class="relative py-12 sm:py-16 px-4 sm:px-8 max-w-[1200px] mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+        <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.35em] text-gold uppercase block mb-2">
+          THE CRAFT YOU WILL MASTER
+        </span>
+        <h3 class="font-decorative text-2xl sm:text-4xl text-ivory tracking-wider uppercase">
+          Inside The Training Process
+        </h3>
+      </div>
+
+      <!-- Pictorial Thumbnails Strip (4 clickable stages) -->
+      <div id="pictorial-thumbs-row"
+        class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-4xl mx-auto mb-7 sm:mb-9">
+      </div>
+
+      <!-- Large Active Pictorial Feature with Prev / Next Arrows -->
+      <div class="relative max-w-4xl mx-auto flex items-center gap-3 sm:gap-6">
+        <button id="pictorial-prev-btn" type="button"
+          class="btn-outline-gold shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-ivory hover:text-gold text-sm sm:text-base"
+          aria-label="Previous training stage">
+          ←
+        </button>
+
+        <div class="flex-1">
+          <div class="artist-torn-frame aspect-[16/10] sm:aspect-[16/9] relative">
+            <img id="pictorial-active-img" src="works/collins-lesulie-PWK6CeCJtJw-unsplash.jpg"
+              alt="Training Process Highlight" class="w-full h-full object-cover transition-opacity duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-7">
+              <span id="pictorial-active-tag"
+                class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-gold block mb-1">
+                STAGE 01
+              </span>
+              <h4 id="pictorial-active-title" class="font-decorative text-lg sm:text-2xl text-ivory mb-1">
+                Machine &amp; Needle Control
+              </h4>
+              <p id="pictorial-active-desc" class="font-cormorant text-sm sm:text-base text-ivory/80 max-w-xl">
+                Understand rotary &amp; coil mechanics, needle depth, voltage calibration, and steady hand posture.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button id="pictorial-next-btn" type="button"
+          class="btn-outline-gold shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-ivory hover:text-gold text-sm sm:text-base"
+          aria-label="Next training stage">
+          →
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2 inside Overlay: Concise Course Plans Comparison -->
+    <div id="training-plans-stage"
+      class="relative py-12 sm:py-16 px-4 sm:px-8 max-w-[1260px] mx-auto border-t border-gold/15 pb-20">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.35em] text-gold uppercase block mb-2">
+          TRAINING PATHWAYS
+        </span>
+        <h3 class="font-decorative text-2xl sm:text-4xl text-ivory tracking-wider uppercase">
+          Choose Your Mentorship Plan
+        </h3>
+      </div>
+
+      <!-- 3 Concise Plans (Horizontal swipe on phone, 3-column grid on desktop) -->
+      <div id="training-plans-cards"
+        class="flex lg:grid lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 items-stretch">
+
+        <!-- PLAN 1 -->
+        <article class="course-plan-card shrink-0 w-[80vw] sm:w-[54vw] lg:w-auto snap-center p-5 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+              <span class="font-cinzel text-[10px] tracking-[0.24em] uppercase text-gold">Beginner</span>
+              <span class="px-2.5 py-0.5 rounded-full border border-gold/25 text-[10px] font-cinzel tracking-wider uppercase text-ivory/75">
+                [Duration]
+              </span>
+            </div>
+            <h4 class="font-decorative text-xl sm:text-2xl text-ivory mb-1">[Course Name — Foundation]</h4>
+            <div class="font-cormorant text-2xl sm:text-3xl text-gold-light font-bold mb-4 pb-3 border-b border-gold/15">
+              [Price]
+            </div>
+            <ul class="space-y-1.5 text-sm sm:text-base font-cormorant text-ivory/80 mb-6">
+              <li>• Machine &amp; hygiene basics</li>
+              <li>• Stencil &amp; line control</li>
+              <li>• Synthetic skin practice</li>
+            </ul>
+          </div>
+          <button type="button" data-enroll-plan="[Course Name — Foundation]"
+            class="enroll-trigger-btn btn-outline-gold w-full py-2.5 px-5 font-cinzel text-xs font-bold tracking-[0.18em] uppercase text-ivory hover:text-gold-light">
+            Enroll in This Plan
+          </button>
+        </article>
+
+        <!-- PLAN 2 (FEATURED) -->
+        <article class="course-plan-card is-featured-plan shrink-0 w-[80vw] sm:w-[54vw] lg:w-auto snap-center p-5 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+              <span class="font-cinzel text-[10px] tracking-[0.24em] uppercase text-gold-light font-bold">Intermediate</span>
+              <span class="px-2.5 py-0.5 rounded-full border border-gold/45 bg-gold/10 text-[10px] font-cinzel tracking-wider uppercase text-gold-light">
+                [Duration]
+              </span>
+            </div>
+            <h4 class="font-decorative text-xl sm:text-2xl text-ivory mb-1">[Course Name — Studio Craft]</h4>
+            <div class="font-cormorant text-2xl sm:text-3xl text-gold-light font-bold mb-4 pb-3 border-b border-gold/20">
+              [Price]
+            </div>
+            <ul class="space-y-1.5 text-sm sm:text-base font-cormorant text-ivory/85 mb-6">
+              <li>• Shading &amp; contrast depth</li>
+              <li>• Custom design workflow</li>
+              <li>• Live studio shadowing</li>
+            </ul>
+          </div>
+          <button type="button" data-enroll-plan="[Course Name — Studio Craft]"
+            class="enroll-trigger-btn btn-gold-rounded w-full py-3 px-5 font-cinzel text-xs font-bold tracking-[0.18em] uppercase">
+            Enroll in This Plan
+          </button>
+        </article>
+
+        <!-- PLAN 3 -->
+        <article class="course-plan-card shrink-0 w-[80vw] sm:w-[54vw] lg:w-auto snap-center p-5 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+              <span class="font-cinzel text-[10px] tracking-[0.24em] uppercase text-gold">Advanced / 1-on-1</span>
+              <span class="px-2.5 py-0.5 rounded-full border border-gold/25 text-[10px] font-cinzel tracking-wider uppercase text-ivory/75">
+                [Duration]
+              </span>
+            </div>
+            <h4 class="font-decorative text-xl sm:text-2xl text-ivory mb-1">[Course Name — Master Mentorship]</h4>
+            <div class="font-cormorant text-2xl sm:text-3xl text-gold-light font-bold mb-4 pb-3 border-b border-gold/15">
+              [Price]
+            </div>
+            <ul class="space-y-1.5 text-sm sm:text-base font-cormorant text-ivory/80 mb-6">
+              <li>• Realism &amp; large pieces</li>
+              <li>• 1-on-1 artist critique</li>
+              <li>• Supervised live practice</li>
+            </ul>
+          </div>
+          <button type="button" data-enroll-plan="[Course Name — Master Mentorship]"
+            class="enroll-trigger-btn btn-outline-gold w-full py-2.5 px-5 font-cinzel text-xs font-bold tracking-[0.18em] uppercase text-ivory hover:text-gold-light">
+            Enroll in This Plan
+          </button>
+        </article>
+
       </div>
     </div>
   </div>
